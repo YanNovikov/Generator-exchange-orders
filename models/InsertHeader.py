@@ -1,11 +1,10 @@
 from loger import Loger
 log = Loger()
-class RowInsertHat:
+class InsertHeader:
     def __init__(self, tablename, object):
         self.tablename = tablename
         self.keysnvalues = object.__dict__
         self.columns = ""
-        self.meanings = ""
         self.addColumns()
 
 

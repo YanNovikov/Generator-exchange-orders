@@ -1,6 +1,6 @@
 from models.OrdersPositions import *
 from utils.randfunctions import *
-from OrdersInsertRow import *
+from OrdersInsert import *
 log = Loger()
 
 class OrdersObject:
@@ -26,9 +26,8 @@ class OrdersObject:
             return Statuses(getGreenStatus, self.id).get()
         else:
             log.ERROR("Wrong zone name has been put. It is now set to 'Red'.")
-            zone = "Red"
             return Statuses(getRedStatus, self.id).get()
 
     def getOrdersRow(self):
-        return OrdersInsertRow(self)
+        return OrdersInsert(self)
 

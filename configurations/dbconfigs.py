@@ -7,6 +7,7 @@ log = Loger()
 class DbConfigs:
     def __init__(self):
         self.configs = Configuration().configs
+        self.initializeconfigs()
 
     def initializeconfigs(self):
         try:

@@ -7,6 +7,7 @@ log = Loger()
 class MessageConfigs:
     def __init__(self):
         self.configs = Configuration().configs
+        self.initializeconfigs()
 
     def initializeconfigs(self):
         try:

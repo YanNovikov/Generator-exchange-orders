@@ -1,13 +1,13 @@
 from configurations.dbconfigs import *
-from RowInsertHat import *
+from InsertHeader import *
 proprties = DbConfigs()
-class OrdersInsertRow:
+class OrdersInsert:
     def __init__(self, order):
         self.order = order
-        self.hat = RowInsertHat(proprties.tablename, self.order).getHat()
-        self.inserts = self.getOrdersInserts()
+        self.hat = InsertHeader(proprties.tablename, self.order).getHat()
+        self.inserts = self.getInserts()
 
-    def getInsertRow(self, index):
+    def getInsert(self, index):
         row = "("
         for item in self.order.__dict__.items():
             if item[0] == "status" or item[0] == "date":
@@ -19,10 +19,10 @@ class OrdersInsertRow:
         row = row[:-1]
         return self.hat + row + ")"
 
-    def getOrdersInserts(self):
+    def getInserts(self):
         inserts = []
         for i in range(0, len(self.order.status)):
             if self.order.status[i] is not None:
-                insert = self.getInsertRow(i)
+                insert = self.getInsert(i)
                 inserts.append(insert)
         return inserts
