@@ -9,4 +9,6 @@ db.initializeconfigs()
 msg = MessageConfigs()
 msg.initializeconfigs()
 
-print OrdersObject(1, "Red").__dict__
+o = OrdersObject(1, "Green")
+print o.__dict__
+print o.getOrdersRow().inserts

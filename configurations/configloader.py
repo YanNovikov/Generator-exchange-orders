@@ -24,7 +24,12 @@ def loadFromXmlFile():
 
 def loadFromJSONFile():
     log.INFO("Loading configs from configuration.json.")
-    with open("files/configuration.json", "r+") as config:
-        names = json.load(config)
-    return names
+    try:
+        with open("files/configuration.json", "r+") as config:
+            names = json.load(config)
+            return names
+    except IOError as err:
+        log.INFO("Can't load configurations from file. {}".format(err.message))
+        sys.exit(1)
+
 

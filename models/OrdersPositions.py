@@ -1,4 +1,4 @@
-from OrdersProperties import OrdersProperty
+from OrdersProperty import OrdersProperty
 from utils.randfunctions import *
 from configurations.generatorconfigs import *
 from datetime import datetime
