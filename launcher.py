@@ -1,14 +1,20 @@
-from configurations.dbconfigs import *
 from configurations.messageconfigs import *
 from models.OrdersObject import *
+from models.Generator import *
 
-g = GeneratorConfigs()
-g.initializeconfigs()
-db = DbConfigs()
-db.initializeconfigs()
-msg = MessageConfigs()
-msg.initializeconfigs()
 
-o = OrdersObject(1, "Green")
-print o.__dict__
-print o.getOrdersRow().inserts
+def initialize():
+    g = GeneratorConfigs()
+    db = DbConfigs()
+    msg = MessageConfigs()
+    log = Loger()
+
+
+def execute():
+    generator = Generator()
+    generator.generate()
+
+
+if __name__ == "__main__":
+    initialize()
+    execute()

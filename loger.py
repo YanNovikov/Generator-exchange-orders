@@ -1,36 +1,35 @@
 import datetime
 from utils.singleton import singleton
-
+from services.txtfileservice import *
 
 @singleton
 class Loger:
     def __init__(self, loggermode="INFODEBUG"):
         self.mode = loggermode
         self.filename = "logs/{}".format(datetime.datetime.now())
+        self.file = TxtFileService(self.filename, "a+")
 
     def INFO(self, msg):
         if self.mode.__contains__("INFO"):
-            with open(self.filename, "a+") as file:
-                file.writelines("[INFO]: {}\n".format(msg))
-            print "[INFO]: " + msg
+            self.writeMessage("INFO", msg)
 
     def DEBUG(self, msg):
         if self.mode.__contains__("DEBUG"):
-            with open(self.filename, "a+") as file:
-                file.writelines("[DEBUG]: {}\n".format(msg))
-            print "[DEBUG]: " + msg
+            self.writeMessage("DEBUG", msg)
 
     def ERROR(self, msg):
-        print "[ERROR]: " + msg
-        with open(self.filename, "a+") as file:
-            file.writelines("[ERROR]: {}\n".format(msg))
+        self.writeMessage("ERROR", msg)
 
     def CRITICAL(self, msg):
-        print "[CRITICAL]: " + msg
-        with open(self.filename, "a+") as file:
-            file.writelines("[CRITICAL]: {}\n".format(msg))
+        self.writeMessage("CRITICAL", msg)
 
     def WARNING(self, msg):
-        print "[WARNING]: " + msg
-        with open(self.filename, "a+") as file:
-            file.writelines("[WARNING]: {}\n".format(msg))
+        self.writeMessage("WARNING", msg)
+
+    def writeMessage(self, tag, msg):
+        print "[{}]: {}".format(tag, msg)
+        try:
+            self.file.writeline("[{}]: {}".format(tag, msg))
+        except IOError as err:
+            print "[ERROR]: Can not write to logfile. {}\n".format(str(err))
+

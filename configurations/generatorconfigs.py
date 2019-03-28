@@ -1,5 +1,6 @@
 from configuration import *
 from utils.singleton import singleton
+from utils.randfunctions import *
 import time
 from datetime import datetime
 log = Loger()
@@ -30,7 +31,22 @@ class GeneratorConfigs:
             self.maxvol = self.configs["maxvol"]
             self.minvol = self.configs["minvol"]
             self.datediff = self.finishdate - self.startdate
+            self.batch = self.getCorrectBatch(self.orderscount, self.batchcount)
+            self.redbatch = self.getOneBatch(self.batch, self.redpart)
+            self.bluebatch = self.getOneBatch(self.batch, self.bluepart)
+            self.greenbatch = self.getOneBatch(self.batch, self.greenpart)
+            self.lastbatch = self.getLastBatch(self.orderscount, self.batchcount)
+            self.redgreenblue = self.redbatch + self.bluebatch + self.greenbatch
             log.INFO("Configurations loaded to GeneratorConfigs.")
         except KeyError as err:
             log.ERROR("Configuration does not fits arguments. {}".format(err))
             sys.exit(1)
+
+    def getCorrectBatch(self, ocount, bcount):
+        return math.trunc(ocount / bcount)
+
+    def getLastBatch(self, ocount, bcount):
+        return ocount - self.getCorrectBatch(ocount, bcount) * bcount
+
+    def getOneBatch(self, batch, part):
+        return math.trunc(batch * part)

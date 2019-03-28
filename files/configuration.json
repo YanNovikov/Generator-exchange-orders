@@ -1,7 +1,7 @@
 {
   "datafilename": "files/orders",
-  "orderscount": 100,
-  "batchcount": 1,
+  "orderscount": 1999,
+  "batchcount": 10,
   "redpart": 0.15,
   "greenpart": 0.60,
   "bluepart": 0.25,

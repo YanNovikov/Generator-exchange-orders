@@ -2,12 +2,11 @@ import json
 import xml
 import sys
 from loger import Loger
-from services.fileservice import *
+from services.jsonfileservice import *
 
 log = Loger()
 def loadConfigs():
-    fileservice = FileService()
-    for name in fileservice.getFilesFromDir("files"):
+    for name in getFilesFromDir("files"):
         if name.__contains__("configuration"):
             with open("files/{}".format(name), "r+") as file:
                 if file.name.endswith(".json"):
@@ -25,6 +24,7 @@ def loadFromXmlFile():
 def loadFromJSONFile():
     log.INFO("Loading configs from configuration.json.")
     try:
+        #jsonfile = JsonFileService("files/configuration.json", "r+")
         with open("files/configuration.json", "r+") as config:
             names = json.load(config)
             return names
