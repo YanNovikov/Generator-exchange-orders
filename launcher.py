@@ -1,7 +1,7 @@
 from configurations.messageconfigs import *
 from models.OrdersObject import *
 from models.Generator import *
-
+from services.dbservice import *
 
 def initialize():
     g = GeneratorConfigs()
@@ -13,6 +13,11 @@ def initialize():
 def execute():
     generator = Generator()
     generator.generate()
+
+    dbservice = DbService()
+    dbservice.dropDatabase()
+    #dbservice.connectDb()
+    #dbservice.insertFromFile()
 
 
 if __name__ == "__main__":

@@ -9,9 +9,9 @@ class OrdersObject:
             self.id = OrderID(num).get()
             self.direction = Direction(self.id).get()
             self.currencypair = CurrencyPair(self.id).get()
-            self.px = Px(self.id).get()
-            self.vol = Vol(self.id).get()
-            self.date = Dates(self.id).get()
+            self.price = Px(self.id).get()
+            self.volume = Vol(self.id).get()
+            self.orderdate = Dates(self.id).get()
             self.status = self.getStatus(zone)
             self.tag = Tag(self.id).get()
         except Exception as err:

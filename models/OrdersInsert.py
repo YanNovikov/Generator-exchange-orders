@@ -10,14 +10,14 @@ class OrdersInsert:
     def getInsert(self, index):
         row = "("
         for item in self.order.__dict__.items():
-            if item[0] == "status" or item[0] == "date":
+            if item[0] == "status" or item[0] == "orderdate":
                 row += "'{}',".format(item[1][index])
-            elif item[0] == "px" or item[0] == "vol":
+            elif item[0] == "price" or item[0] == "volume":
                 row += "{},".format(item[1])
             else:
                 row += "'{}',".format(item[1])
         row = row[:-1]
-        return self.hat + row + ")"
+        return "{}{})".format(self.hat, row)
 
     def getInserts(self):
         inserts = []
