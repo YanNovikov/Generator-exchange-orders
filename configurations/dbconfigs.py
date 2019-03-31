@@ -6,23 +6,19 @@ log = Loger()
 @singleton
 class DbConfigs:
     def __init__(self):
-        self.configs = Configuration().configs
-        self.initializeconfigs()
+        pass
 
     def initializeconfigs(self):
         try:
-            self.dbname = self.configs["dbname"]
-            self.tablename = self.configs["tablename"]
-            self.user = self.configs["user"]
-            self.password = self.configs["password"]
-            self.host = self.configs["host"]
-            self.createdbfile = self.configs["createdbfile"]
-            self.createblefile = self.configs["createtablefile"]
-            self.testinsert = self.configs["testinsert"]
-            self.testdelete = self.configs["testdelete"]
-            self.testselect = self.configs["testselect"]
-            self.testvalues = self.configs["testvalues"]
-            log.INFO("Configurations loaded to DbConfigs.")
+            configs = Configuration().configs
+            self.dbname = configs["dbname"]
+            self.tablename = configs["tablename"]
+            self.user = configs["user"]
+            self.password = configs["password"]
+            self.host = configs["host"]
+            self.createtablefile = configs["createtablefile"]
+            self.testselect = configs["testselect"]
+            log.INFO("Configurations for database usage loaded.")
         except KeyError as err:
-            log.ERROR("Configuration does not fits arguments. {}".format(err))
+            log.ERROR("Configuration does not fits arguments. No {} field is there".format(err))
             sys.exit(1)

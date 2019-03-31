@@ -1,7 +1,6 @@
 from configuration import *
 from utils.singleton import singleton
-from utils.randfunctions import *
-import time
+import time, math
 from datetime import datetime
 log = Loger()
 
@@ -9,27 +8,27 @@ log = Loger()
 @singleton
 class GeneratorConfigs:
     def __init__(self):
-        self.configs = Configuration().configs
-        self.initializeconfigs()
+        pass
 
     def initializeconfigs(self):
         try:
-            self.datafilename = self.configs["datafilename"]
-            self.batchcount = self.configs["batchcount"]
-            self.orderscount = self.configs["orderscount"]
-            self.redpart = self.configs["redpart"]
-            self.greenpart = self.configs["greenpart"]
-            self.bluepart = self.configs["bluepart"]
-            self.startdate = time.mktime(datetime.strptime(self.configs["startdate"], "%d.%m.%Y %H:%M:%S").timetuple())
-            self.finishdate = time.mktime(datetime.strptime(self.configs["finishdate"], "%d.%m.%Y %H:%M:%S").timetuple())
-            self.status = self.configs["status"]
-            self.currencypairs = self.configs["currencypairs"]
-            self.tags = self.configs["tags"]
-            self.dirrection = self.configs["dirrection"]
-            self.maxpx = self.configs["maxpx"]
-            self.minpx = self.configs["minpx"]
-            self.maxvol = self.configs["maxvol"]
-            self.minvol = self.configs["minvol"]
+            configs = Configuration().configs
+            self.datafilename = configs["datafilename"]
+            self.batchcount = configs["batchcount"]
+            self.orderscount = configs["orderscount"]
+            self.redpart = configs["redpart"]
+            self.greenpart = configs["greenpart"]
+            self.bluepart = configs["bluepart"]
+            self.startdate = time.mktime(datetime.strptime(configs["startdate"], "%d.%m.%Y %H:%M:%S").timetuple())
+            self.finishdate = time.mktime(datetime.strptime(configs["finishdate"], "%d.%m.%Y %H:%M:%S").timetuple())
+            self.status = configs["status"]
+            self.currencypairs = configs["currencypairs"]
+            self.tags = configs["tags"]
+            self.dirrection = configs["dirrection"]
+            self.maxpx = configs["maxpx"]
+            self.minpx = configs["minpx"]
+            self.maxvol = configs["maxvol"]
+            self.minvol = configs["minvol"]
             self.datediff = self.finishdate - self.startdate
             self.batch = self.getCorrectBatch(self.orderscount, self.batchcount)
             self.redbatch = self.getOneBatch(self.batch, self.redpart)
@@ -37,7 +36,7 @@ class GeneratorConfigs:
             self.greenbatch = self.getOneBatch(self.batch, self.greenpart)
             self.lastbatch = self.getLastBatch(self.orderscount, self.batchcount)
             self.redgreenblue = self.redbatch + self.bluebatch + self.greenbatch
-            log.INFO("Configurations loaded to GeneratorConfigs.")
+            log.INFO("Configurations for generating loaded.")
         except KeyError as err:
             log.ERROR("Configuration does not fits arguments. {}".format(err))
             sys.exit(1)

@@ -3,6 +3,7 @@ from utils.randfunctions import *
 from OrdersInsert import *
 log = Loger()
 
+
 class OrdersObject:
     def __init__(self, num, zone):
         try:

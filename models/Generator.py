@@ -1,9 +1,6 @@
-from configurations.generatorconfigs import *
-from services.txtfileservice import *
-from models.OrdersObject import *
+from services.file.txtfileservice import *
 from OrdersBatch import *
 
-log = Loger()
 
 
 class Generator:
@@ -11,16 +8,19 @@ class Generator:
         self.properties = GeneratorConfigs()
         self.fileworker = TxtFileService(self.properties.datafilename, "a+")
         self.index = 0
+
     def generate(self):
         cleanFile(self.properties.datafilename)
 
         for index in range(0, self.properties.batchcount):
-            self.getEveryBatch()
-        self.getFinalBatch()
+            self.__getEveryBatch()
+        self.__getFinalBatch()
 
-        log.INFO("Orders created: {}".format(self.index))
+        log.INFO("Orders created: {}.".format(self.index))
+        log.INFO("All rows successfully added to file {}.".format(self.properties.datafilename))
+        self.fileworker.close()
 
-    def getEveryBatch(self):
+    def __getEveryBatch(self):
 
         log.DEBUG("Red zone ==== {}".format(self.properties.redbatch))
         self.fileworker.writeline("--Red zone")
@@ -42,7 +42,7 @@ class Generator:
 
         log.DEBUG("Batch created {} rows.".format(self.properties.redgreenblue))
 
-    def getFinalBatch(self):
+    def __getFinalBatch(self):
         log.DEBUG("Additional zone ==== {}".format(self.properties.lastbatch))
         self.fileworker.writeline("--Additional zone")
         pointer = 0

@@ -14,22 +14,18 @@
                  "NZD/JPY", "AUD/EUR", "NZD/EUR", "EUR/CAD"],
   "tags": ["Home", "LinkedIn", "Facebook", "BitBon", "Repairs", "Academy", "Apple", "Green Peace"],
   "dirrection": ["Buy", "Sell"],
-  "maxpx": 30,
-  "minpx": 10,
-  "maxvol": 1200,
-  "minvol": 120,
+  "maxpx": 10,
+  "minpx": 1,
+  "maxvol": 100,
+  "minvol": 10,
 
   "dbname": "generator",
   "tablename": "orders",
   "user": "root",
   "password": "12345678",
   "host": "localhost",
-  "createdbfile": "files/create.sql",
   "createtablefile": "files/createtable.sql",
-  "testinsert": "INSERT INTO Orders (ID, CurrencyPair, Direction, Status, OrderDate, Volume, Price, Tag) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-  "testdelete": "DELETE FROM Orders WHERE ID = '1'",
   "testselect": "SELECT * FROM Orders",
-  "testvalues": ["1", "test", "test", "test", "test", 1.0, 23.4, "test"],
 
   "queuename": "orders"
 }

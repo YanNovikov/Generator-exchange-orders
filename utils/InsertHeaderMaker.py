@@ -1,12 +1,13 @@
 from loger import Loger
 log = Loger()
-class InsertHeader:
+
+
+class InsertHeaderMaker:
     def __init__(self, tablename, object):
         self.tablename = tablename
         self.keysnvalues = object.__dict__
         self.columns = ""
         self.addColumns()
-
 
     def addColumns(self):
         for item in self.keysnvalues.items():

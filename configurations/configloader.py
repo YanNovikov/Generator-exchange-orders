@@ -1,35 +1,36 @@
-import json
-import xml
 import sys
-from loger import Loger
-from services.jsonfileservice import *
+from services.file.jsonfileservice import *
 
 log = Loger()
-def loadConfigs():
-    for name in getFilesFromDir("files"):
-        if name.__contains__("configuration"):
-            with open("files/{}".format(name), "r+") as file:
-                if file.name.endswith(".json"):
-                    return loadFromJSONFile()
-                elif file.name.endswith(".xml"):
-                    return loadFromXmlFile()
-                else:
-                    log.ERROR("There is no configuration file. Please add it or app wont start.")
-                    sys.exit(1)
 
 
-def loadFromXmlFile():
-    log.INFO("Loading configs from configuration.xml.")
-
-def loadFromJSONFile():
-    log.INFO("Loading configs from configuration.json.")
+def loadConfigs(filename):
     try:
-        #jsonfile = JsonFileService("files/configuration.json", "r+")
-        with open("files/configuration.json", "r+") as config:
-            names = json.load(config)
-            return names
+        with open("files/{}".format(filename), "r+") as file:
+            if file.name.endswith(".json"):
+                return loadFromJSONFile(file)
+            elif file.name.endswith(".xml"):
+                return loadFromXmlFile(file)
     except IOError as err:
-        log.INFO("Can't load configurations from file. {}".format(err.message))
+        raise err
+
+def loadDefaults():
+    try:
+        return loadConfigs("defaults.json")
+    except IOError as err:
+        log.ERROR("Error occured while opening defaults configuration file. Message: {}.".format(str(err)))
         sys.exit(1)
+
+
+def loadFromXmlFile(file):
+    log.INFO("Loading configs from {}.".format(file.name))
+
+
+def loadFromJSONFile(file):
+    log.INFO("Loading configs from {}.".format(file.name))
+    fileservice = JsonFileService(file.name, "r+")
+    names = fileservice.read()
+    fileservice.close()
+    return names
 
 

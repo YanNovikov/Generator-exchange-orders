@@ -32,7 +32,6 @@ class Tag(OrdersProperty):
         return properties.tags[math.trunc(math.fmod(num, len(properties.tags)))]
 
 
-
 class Direction(OrdersProperty):
     def __init__(self, num):
         OrdersProperty.__init__(self, num)
@@ -76,6 +75,7 @@ class Dates(OrdersProperty):
         dates.append("{}.{}".format(datetime.fromtimestamp(date + firststep).strftime('%d.%m.%Y %H:%M:%S'), miliseconds2))
         dates.append("{}.{}".format(datetime.fromtimestamp(date + firststep + secondstep).strftime('%d.%m.%Y %H:%M:%S'), miliseconds3))
         return dates
+
 
 class Statuses(OrdersProperty):
     def __init__(self, fun, num):

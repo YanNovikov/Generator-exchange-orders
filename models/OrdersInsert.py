@@ -1,23 +1,28 @@
 from configurations.dbconfigs import *
-from InsertHeader import *
-proprties = DbConfigs()
+from utils.InsertHeaderMaker import *
+
+
 class OrdersInsert:
     def __init__(self, order):
         self.order = order
-        self.hat = InsertHeader(proprties.tablename, self.order).getHat()
+        self.hat = InsertHeaderMaker(DbConfigs().tablename, self.order).getHat()
         self.inserts = self.getInserts()
 
     def getInsert(self, index):
-        row = "("
+        values = " ("
         for item in self.order.__dict__.items():
+
             if item[0] == "status" or item[0] == "orderdate":
-                row += "'{}',".format(item[1][index])
+                values += "'{}',".format(item[1][index])
+
             elif item[0] == "price" or item[0] == "volume":
-                row += "{},".format(item[1])
+                    values += "{},".format(item[1])
+
             else:
-                row += "'{}',".format(item[1])
-        row = row[:-1]
-        return "{}{})".format(self.hat, row)
+                values += "'{}',".format(item[1])
+
+        values = values[:-1]
+        return "{}{})".format(self.hat, values)
 
     def getInserts(self):
         inserts = []

@@ -1,25 +1,31 @@
 from configurations.messageconfigs import *
-from models.OrdersObject import *
 from models.Generator import *
-from services.dbservice import *
+from services.database.mysql.service import *
 
-def initialize():
-    g = GeneratorConfigs()
-    db = DbConfigs()
-    msg = MessageConfigs()
-    log = Loger()
+
+def initialize(args):
+    if len(args) == 3:
+        Loger().setLogermode(args[2])
+        Configuration().__init__(args[1])
+
+    GeneratorConfigs().initializeconfigs()
+    DbConfigs().initializeconfigs()
+    MessageConfigs().initializeconfigs()
 
 
 def execute():
-    generator = Generator()
-    generator.generate()
+    executor = Generator()
+    executor.generate()
 
-    dbservice = DbService()
-    dbservice.dropDatabase()
-    #dbservice.connectDb()
-    #dbservice.insertFromFile()
+    database = MySqlService(nowopen=True)  # opens connection right here
+    database.cleanTable()
+    database.insertFromFile(GeneratorConfigs().datafilename, commiteverytime=False)  # if True commits after every insert
+    # database.selectValues()
+    database.commit()
+
+    pass
 
 
 if __name__ == "__main__":
-    initialize()
+    initialize(sys.argv)
     execute()

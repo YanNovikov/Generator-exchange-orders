@@ -1,13 +1,13 @@
 import datetime
 from utils.singleton import singleton
-from services.txtfileservice import *
+
 
 @singleton
 class Loger:
-    def __init__(self, loggermode="INFODEBUG"):
+    def __init__(self, loggermode="INFODEBUGWARNING"):
         self.mode = loggermode
         self.filename = "logs/{}".format(datetime.datetime.now())
-        self.file = TxtFileService(self.filename, "a+")
+        self.writeMessage("INFO", "Logger started in default mode.")
 
     def INFO(self, msg):
         if self.mode.__contains__("INFO"):
@@ -24,12 +24,17 @@ class Loger:
         self.writeMessage("CRITICAL", msg)
 
     def WARNING(self, msg):
-        self.writeMessage("WARNING", msg)
+        if self.mode.__contains__("WARNING"):
+            self.writeMessage("WARNING", msg)
 
     def writeMessage(self, tag, msg):
         print "[{}]: {}".format(tag, msg)
         try:
-            self.file.writeline("[{}]: {}".format(tag, msg))
+            with open(self.filename, "a+") as file:
+                file.write("[{}]: {}\n".format(tag, msg))
         except IOError as err:
             print "[ERROR]: Can not write to logfile. {}\n".format(str(err))
-
+            
+    def setLogermode(self, mode):
+        self.mode = mode
+        self.writeMessage("INFO", "Logger mode is now set in {}.".format(mode))
