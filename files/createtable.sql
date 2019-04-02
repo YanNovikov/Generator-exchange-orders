@@ -1,4 +1,4 @@
-CREATE TABLE Orders(
+CREATE TABLE YansOrders(
   ID VARCHAR(32),
   CurrencyPair VARCHAR(16),
   Direction VARCHAR(16),

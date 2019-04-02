@@ -34,8 +34,8 @@ class GeneratorConfigs:
             self.redbatch = self.getOneBatch(self.batch, self.redpart)
             self.bluebatch = self.getOneBatch(self.batch, self.bluepart)
             self.greenbatch = self.getOneBatch(self.batch, self.greenpart)
-            self.lastbatch = self.getLastBatch(self.orderscount, self.batchcount)
             self.redgreenblue = self.redbatch + self.bluebatch + self.greenbatch
+            self.lastbatch = self.getLastBatch(self.orderscount, self.redgreenblue * self.batchcount)
             log.INFO("Configurations for generating loaded.")
         except KeyError as err:
             log.ERROR("Configuration does not fits arguments. {}".format(err))
@@ -45,7 +45,7 @@ class GeneratorConfigs:
         return math.trunc(ocount / bcount)
 
     def getLastBatch(self, ocount, bcount):
-        return ocount - self.getCorrectBatch(ocount, bcount) * bcount
+        return ocount - bcount
 
     def getOneBatch(self, batch, part):
         return math.trunc(batch * part)

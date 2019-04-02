@@ -1,6 +1,6 @@
 from services.database.mysql.connection import *
 from configurations.dbconfigs import *
-
+from utils.timeit import *
 
 class MySqlService:
     def __init__(self, nowopen=False):
@@ -19,7 +19,7 @@ class MySqlService:
                 log.ERROR("User name or password is incorrect.")
             else:
                 log.ERROR(str(err))
-
+    @timeit
     def insertFromFile(self, datafilename, commiteverytime=False):
         with open(datafilename, "r+") as file:
             try:
@@ -29,6 +29,7 @@ class MySqlService:
                         self.ExecuteStatement(insert)
                         if commiteverytime:
                             self.commit()
+                log.INFO("All rows from file have bean inserted into a table - Success.")
             except IOError, err:
                 log.ERROR(str(err))
                 log.ERROR("Order is not added to Table.\n")
@@ -44,11 +45,11 @@ class MySqlService:
         self.ExecuteStatement(self.__prop.testselect)
         result = self.cursor.fetchall()
         if result:
-            log.INFO("Select results are: ")
+            log.DEBUG("Select results are: ")
             for x in result:
-                log.INFO(str(x))
+                log.DEBUG(str(x))
         else:
-            log.INFO("No rows found.")
+            log.DEBUG("No rows found.")
 
     def cleanTable(self):
         try:
@@ -60,6 +61,7 @@ class MySqlService:
     def commit(self):
         try:
             self.conn.commit()
+            log.INFO("Changes are successfully commited.")
         except mysql.connector.Error as err:
             log.ERROR(str(err))
 

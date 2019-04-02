@@ -33,7 +33,7 @@ class Loger:
             with open(self.filename, "a+") as file:
                 file.write("[{}]: {}\n".format(tag, msg))
         except IOError as err:
-            print "[ERROR]: Can not write to logfile. {}\n".format(str(err))
+            print "[ERROR]: Can not write to logfile. {}".format(str(err))
             
     def setLogermode(self, mode):
         self.mode = mode

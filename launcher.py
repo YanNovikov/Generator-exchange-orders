@@ -4,14 +4,19 @@ from services.database.mysql.service import *
 
 
 def initialize(args):
+
     if len(args) == 3:
         Loger().setLogermode(args[2])
+        Reporter().initialize()
         Configuration().__init__(args[1])
+    else:
+        log.WARNING("Not all arguments are set. Try python launcher.py [configs.json/.xml] [INFO/DEBUG]")
+
+
 
     GeneratorConfigs().initializeconfigs()
     DbConfigs().initializeconfigs()
     MessageConfigs().initializeconfigs()
-
 
 def execute():
     executor = Generator()
@@ -23,9 +28,12 @@ def execute():
     # database.selectValues()
     database.commit()
 
-    pass
+
+def finalize():
+    Reporter().finalize(GeneratorConfigs())
 
 
 if __name__ == "__main__":
     initialize(sys.argv)
     execute()
+    finalize()
