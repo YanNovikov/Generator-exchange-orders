@@ -33,6 +33,10 @@ class RMQService:
             self.__queue_bind("Red", self.properties.rmq_exchange_name, self.properties.rmq_red_routing_key)
             self.__queue_bind("Green", self.properties.rmq_exchange_name, self.properties.rmq_green_routing_key)
             self.__queue_bind("Blue", self.properties.rmq_exchange_name, self.properties.rmq_blue_routing_key)
+
+            self.__queue_purge("Red")
+            self.__queue_purge("Green")
+            self.__queue_purge("Blue")
         except Exception as err:
             log.ERROR("Occured while preparing queues to send messages to Rmq. {}".format(str(err)))
             return False
