@@ -1,4 +1,5 @@
 from services.file.txtfileservice import *
+from services.rabbitmq.service import *
 from OrdersBatch import *
 from utils.timeit import *
 
@@ -7,6 +8,7 @@ class Generator:
     def __init__(self):
         self.properties = GeneratorConfigs()
         self.fileworker = TxtFileService(self.properties.datafilename, "a+")
+        self.rmqpublisher = RMQService()
         self.index = 1
 
     @timeit
@@ -18,12 +20,16 @@ class Generator:
         log.DEBUG("Blue zone ==== {}".format(self.properties.bluebatch))
 
         self.fileworker.open()
+        self.rmqpublisher.startSending()
+
         for index in range(0, self.properties.batchcount):
             log.DEBUG("Batch {}.".format(index))
             self.__getEveryBatch()
         if self.properties.lastbatch > 0:
             self.__getFinalBatch()
+
         self.fileworker.close()
+        self.rmqpublisher.stopSending()
 
         log.INFO("Orders created: {}.".format(self.index - 1))
         log.INFO("All rows successfully added to file {}.".format(self.properties.datafilename))
@@ -34,14 +40,17 @@ class Generator:
         self.fileworker.writeline("--Red zone")
         orders = self.__getRedZone(self.properties.redbatch)
         self.__writeZone(orders)
+        self.rmqpublisher.sendObjects(orders.objects, "Red")
 
         self.fileworker.writeline("--Green zone")
         orders = self.__getBlueZone(self.properties.greenbatch)
         self.__writeZone(orders)
+        self.rmqpublisher.sendObjects(orders.objects, "Green")
 
         self.fileworker.writeline("--Blue zone")
         orders = self.__getGreenZone(self.properties.bluebatch)
         self.__writeZone(orders)
+        self.rmqpublisher.sendObjects(orders.objects, "Blue")
 
         log.DEBUG("Batch created {} rows.".format(self.properties.redgreenblue))
 

@@ -4,16 +4,23 @@ import mysql.connector
 log = Loger()
 
 
-def createTable(conn, createtablefile):
-    try:
-        with open(createtablefile, "r") as file:
-            cmd = file.read()
-            cursor = conn.cursor()
-            cursor.execute(cmd)
-            log.INFO("Table has been created.")
-    except mysql.connector.Error as err:
-        log.ERROR(str(err))
+def createTable(conn, dbname, createtablefile, tablename):
+    if not showTable(conn, tablename):
+        try:
+            with open(createtablefile, "r") as file:
+                cmd = file.read()
+                conn.ExecuteStatement("USE {}".format(dbname))
+                conn.ExecuteStatement(cmd)
+                log.INFO("Table has been created.")
+        except mysql.connector.Error as err:
+            log.ERROR(str(err))
 
+def dropTable(conn, tablename):
+    try:
+        conn.ExecuteStatement("DROP TABLE {}".format(tablename))
+    except mysql.connector.Error as err:
+        log.ERROR("While dropping table. {}".format(str(err)))
+        raise err
 
 def cleanTable(conn, tablename):
     try:
@@ -23,6 +30,12 @@ def cleanTable(conn, tablename):
         log.ERROR("Table does not exist. {}".format(str(err)))
         raise err
 
+def showTable(conn, tablename):
+    conn.ExecuteStatement("SHOW TABLES")
+    for x in conn.cursor:
+        if str(x).__contains__(tablename):
+            log.DEBUG("Table '{}' is found.".format(tablename))
+            return True
 
 def selectValues(self):
     cursor = self.conn.cursor()
@@ -36,12 +49,7 @@ def selectValues(self):
         log.INFO("No rows found.")
 
 
-def showTable(conn, tablename):
-    cursor = ExecuteStatement(conn, "SHOW TABLES")
-    for x in cursor:
-        if str(x).__contains__(tablename):
-            log.DEBUG("Table '{}' is found.".format(tablename))
-            return True
+
 
 
 def dropDatabase(conn, dbname):

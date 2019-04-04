@@ -1,7 +1,8 @@
 from configurations.messageconfigs import *
+from services.database.mysql.crud import *
 from models.Generator import *
 from services.database.mysql.service import *
-
+from services.rabbitmq.service import *
 
 def initialize(args):
 
@@ -23,10 +24,12 @@ def execute():
     executor.generate()
 
     database = MySqlService(nowopen=True)  # opens connection right here
+    # dropTable(database, DbConfigs().tablename)
+    createTable(database, database.conn.dbname, DbConfigs().createtablefile, DbConfigs().tablename)
     database.cleanTable()
     database.insertFromFile(GeneratorConfigs().datafilename, commiteverytime=False)  # if True commits after every insert
-    # database.selectValues()
     database.commit()
+    # database.selectValues()
 
 
 def finalize():

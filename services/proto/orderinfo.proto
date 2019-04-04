@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message OrderInfo {
+    uint64 primaryid = 1;
+    uint64 id = 2;
+    string direction = 3;
+    string currencypair = 4;
+    float price = 5;
+    int32 volume = 6;
+    string orderdate = 7;
+    string status = 8;
+    string tag = 9;
+}

@@ -6,7 +6,7 @@ from utils.singleton import singleton
 class Loger:
     def __init__(self, loggermode="INFODEBUGWARNING"):
         self.mode = loggermode
-        self.filename = "logs/{}".format(datetime.datetime.now())
+        self.filename = "files/logs/{}".format(datetime.datetime.now())
         self.writeMessage("INFO", "Logger started in default mode.")
 
     def INFO(self, msg):

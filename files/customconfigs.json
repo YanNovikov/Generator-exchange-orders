@@ -24,11 +24,22 @@
   "user": "root",
   "password": "12345678",
   "host": "localhost",
-  "createtablefile": "files/createtable.sql",
+  "createtablefile": "files/sql/createtable.sql",
   "testinsert": "INSERT INTO Orders (ID, CurrencyPair, Direction, Status, OrderDate, Volume, Price, Tag) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
   "testdelete": "DELETE FROM Orders WHERE ID = '1'",
   "testselect": "SELECT * FROM Orders",
   "testvalues": ["1", "test", "test", "test", "test", 1.0, 23.4, "test"],
 
-  "queuename": "orders"
+  "rmq_queue_original": "orders_values",
+  "rmq_queue_protobuff": "orders_protobuff",
+  "rmq_host": "127.0.0.1",
+  "rmq_port": 5672,
+  "rmq_vhost": "/",
+  "rmq_user": "guest",
+  "rmq_password": "guest",
+  "rmq_exchange_name": "orders",
+  "rmq_exchange_type": "topic",
+  "rmq_red_routing_key": "order.red",
+  "rmq_green_routing_key": "order.green",
+  "rmq_blue_routing_key": "order.blue"
 }
