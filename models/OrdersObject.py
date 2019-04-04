@@ -32,3 +32,11 @@ class OrdersObject:
     def getOrdersRow(self):
         return OrdersInsert(self)
 
+    def __str__(self):
+        return "('{}','{}','{}',{},{},'{}')".format(self.id,
+                                                       self.direction,
+                                                       self.currencypair,
+                                                       self.price,
+                                                       self.volume,
+                                                       self.tag)
+

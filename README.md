@@ -78,7 +78,7 @@ Then write all fields of configurations according to defaults.json
 ## Start app
 
 ```
-$ python launcher.py [yourconfigs.json/.xml] [INFO/DEBUG]
+$ python launcher.py customconfigs.json INFO
 ```
 
 ---
