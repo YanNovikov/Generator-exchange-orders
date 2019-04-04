@@ -22,7 +22,7 @@
   "dbname": "generator",
   "tablename": "orders",
   "user": "root",
-  "password": "12345678",
+  "password": "root",
   "host": "localhost",
   "createtablefile": "files/sql/createtable.sql",
   "testinsert": "INSERT INTO Orders (ID, CurrencyPair, Direction, Status, OrderDate, Volume, Price, Tag) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
