@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Generator-exchange-orders.iml" filepath="$PROJECT_DIR$/.idea/Generator-exchange-orders.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Exchange-orders-generator.iml" filepath="$PROJECT_DIR$/.idea/Exchange-orders-generator.iml" />
     </modules>
   </component>
 </project>

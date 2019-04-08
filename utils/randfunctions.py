@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import math
 from configurations.generatorconfigs import GeneratorConfigs
 g = GeneratorConfigs()
@@ -28,3 +29,9 @@ def getGreenStatus(stat):
 
 def getBlueStatus(stat):
     return [getNewStatus(), getToProviderStatus(stat), None]
+
+def getChangedValue(initial, seed, change=0.06):
+    if math.fmod(seed, 2) == 0:
+        return initial + initial * change
+    else:
+        return initial - initial * change

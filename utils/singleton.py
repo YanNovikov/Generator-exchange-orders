@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 def singleton(class_):
     instances = {}
     def getinstance(*args, **kwargs):

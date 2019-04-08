@@ -1,6 +1,7 @@
+from __future__ import unicode_literals
 from services.file.txtfileservice import *
 from services.rabbitmq.service import *
-from OrdersBatch import *
+from models.OrdersBatch import *
 from utils.timeit import *
 
 
@@ -39,17 +40,17 @@ class Generator:
 
         self.fileworker.writeline("--Red zone")
         orders = self.__getRedZone(self.properties.redbatch)
-        self.__writeZone(orders)
+        self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.objects, "Red")
 
         self.fileworker.writeline("--Green zone")
-        orders = self.__getBlueZone(self.properties.greenbatch)
-        self.__writeZone(orders)
+        orders = self.__getGreenZone(self.properties.greenbatch)
+        self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.objects, "Green")
 
         self.fileworker.writeline("--Blue zone")
-        orders = self.__getGreenZone(self.properties.bluebatch)
-        self.__writeZone(orders)
+        orders = self.__getBlueZone(self.properties.bluebatch)
+        self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.objects, "Blue")
 
         log.DEBUG("Batch created {} rows.".format(self.properties.redgreenblue))
@@ -70,7 +71,7 @@ class Generator:
                     zone = "Blue"
                     flag = 0
                 order = OrdersObject(self.index, zone)
-                self.fileworker.writelines(OrdersInsert(order).inserts)
+                self.fileworker.writelines(OrdersInfo(order).inserts)
                 self.index += 1
 
     @timeit
@@ -92,5 +93,9 @@ class Generator:
         return orders
 
     @timeit
-    def __writeZone(self, orders):
+    def __writeCSV(self, orders):
+        self.fileworker.writelines(orders.csvrows)
+
+    @timeit
+    def __writeInserts(self, orders):
         self.fileworker.writelines(orders.inserts)

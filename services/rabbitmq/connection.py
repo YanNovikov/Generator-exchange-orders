@@ -1,6 +1,8 @@
-import pika
+from __future__ import unicode_literals
 from configurations.messageconfigs import *
 from loger import *
+import pika
+
 log = Loger()
 
 

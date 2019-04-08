@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from loger import *
 import threading
 import mysql.connector
@@ -5,22 +6,25 @@ log = Loger()
 
 
 def createTable(conn, dbname, createtablefile, tablename):
-    if not showTable(conn, tablename):
-        try:
-            with open(createtablefile, "r") as file:
-                cmd = file.read()
-                conn.ExecuteStatement("USE {}".format(dbname))
-                conn.ExecuteStatement(cmd)
-                log.INFO("Table has been created.")
-        except mysql.connector.Error as err:
-            log.ERROR(str(err))
+    if conn.conn.isconnected:
+        if not showTable(conn, tablename):
+            try:
+                with open(createtablefile, "r") as file:
+                    cmd = file.read()
+                    conn.ExecuteStatement("USE {}".format(dbname))
+                    conn.ExecuteStatement(cmd)
+                    log.INFO("Table has been created.")
+            except mysql.connector.Error as err:
+                log.ERROR("Occured while creating table. {}".format(str(err)))
 
 def dropTable(conn, tablename):
-    try:
-        conn.ExecuteStatement("DROP TABLE {}".format(tablename))
-    except mysql.connector.Error as err:
-        log.ERROR("While dropping table. {}".format(str(err)))
-        raise err
+    if showTable(conn, tablename):
+        try:
+            conn.ExecuteStatement("DROP TABLE {}".format(tablename))
+            log.INFO("Table '{}' is dropped.".format(tablename))
+        except mysql.connector.Error as err:
+            log.ERROR("While dropping table. {}".format(str(err)))
+            raise err
 
 def cleanTable(conn, tablename):
     try:
@@ -31,11 +35,14 @@ def cleanTable(conn, tablename):
         raise err
 
 def showTable(conn, tablename):
-    conn.ExecuteStatement("SHOW TABLES")
-    for x in conn.cursor:
-        if str(x).__contains__(tablename):
-            log.DEBUG("Table '{}' is found.".format(tablename))
-            return True
+    if conn.conn.isconnected:
+        conn.ExecuteStatement("SHOW TABLES")
+        for x in conn.cursor:
+            if str(x).__contains__(tablename):
+                log.DEBUG("Table '{}' is found.".format(tablename))
+                return True
+    else:
+        return False
 
 def selectValues(self):
     cursor = self.conn.cursor()
@@ -48,14 +55,15 @@ def selectValues(self):
     else:
         log.INFO("No rows found.")
 
+def createDatabase(dbname, params):
+    conn = mysql.connector.connect(host=params.host, user=params.user, password=params.password)
+    log.DEBUG("Creating database {}".format(dbname))
+    ExecuteStatement(conn, "CREATE DATABASE {}".format(dbname))
 
-
-
-
-def dropDatabase(conn, dbname):
+def dropDatabase(dbname, params):
+    conn = mysql.connector.connect(host=params.host, user=params.user, password=params.password)
     log.DEBUG("Dropping database {}".format(dbname))
-    ExecuteStatement(conn, "DROP DATABASE {}".format(dbname))
-
+    ExecuteStatement(conn, "DROP SCHEMA {}".format(dbname))
 
 def ExecuteStatement(conn, statement, values=None):
     cursor = conn.cursor()

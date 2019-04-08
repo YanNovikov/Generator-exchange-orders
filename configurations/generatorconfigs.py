@@ -1,6 +1,8 @@
-from configuration import *
+from __future__ import unicode_literals
+from configurations.configuration import *
 from utils.singleton import singleton
-import time, math
+import time
+import math
 from datetime import datetime
 log = Loger()
 
@@ -25,10 +27,13 @@ class GeneratorConfigs:
             self.currencypairs = configs["currencypairs"]
             self.tags = configs["tags"]
             self.dirrection = configs["dirrection"]
+            self.descriptions = configs["descriptions"]
             self.maxpx = configs["maxpx"]
             self.minpx = configs["minpx"]
             self.maxvol = configs["maxvol"]
             self.minvol = configs["minvol"]
+            self.pxseed = (self.maxpx - self.minpx + 1) * 100
+            self.volseed = (self.maxvol - self.minvol + 1) * 10
             self.datediff = self.finishdate - self.startdate
             self.batch = self.getCorrectBatch(self.orderscount, self.batchcount)
             self.redbatch = self.getOneBatch(self.batch, self.redpart)

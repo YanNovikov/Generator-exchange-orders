@@ -1,4 +1,5 @@
-from configuration import *
+from __future__ import unicode_literals
+from configurations.configuration import *
 from utils.singleton import singleton
 log = Loger()
 

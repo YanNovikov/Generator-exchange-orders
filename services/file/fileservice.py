@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import os
 from abc import abstractmethod
 from loger import *
@@ -54,6 +55,6 @@ def cleanFile(filename):
         with open(filename, "r+") as file:
             file.truncate()
             Loger().DEBUG("File '{}' has been just cleaned.".format(file.name))
-    except IOError, err:
-        print (err.message)
+    except IOError as err:
+        print (str(err))
 

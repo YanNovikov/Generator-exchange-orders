@@ -1,4 +1,4 @@
-from loger import *
+from __future__ import unicode_literals
 import operator
 from services.file.txtfileservice import *
 from datetime import datetime

@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from services.rabbitmq.connection import *
 from configurations.messageconfigs import *
 from utils.timeit import *
@@ -14,13 +15,14 @@ class RMQService:
 
 
         try:
-            self.__open_connection(host=self.properties.rmq_host, port=self.properties.rmq_port,
+            if self.__open_connection(host=self.properties.rmq_host, port=self.properties.rmq_port,
                                  virtual_host=self.properties.rmq_vhost, user=self.properties.rmq_user,
-                                 password=self.properties.rmq_password)
-
-            self.__delete_exchange(exchange_name=self.properties.rmq_exchange_name)
-            self.__declare_exchange(exchange_name=self.properties.rmq_exchange_name,
-                                 exchange_type=self.properties.rmq_exchange_type)
+                                 password=self.properties.rmq_password):
+                self.__delete_exchange(exchange_name=self.properties.rmq_exchange_name)
+                self.__declare_exchange(exchange_name=self.properties.rmq_exchange_name,
+                                     exchange_type=self.properties.rmq_exchange_type)
+            else:
+                return False
         except ValueError as err:
             log.ERROR("Occured while preparing exchange to send messages to Rmq. {}".format(str(err)))
             return False
@@ -48,17 +50,15 @@ class RMQService:
 
     @timeit
     def sendObjects(self, objects, key):
-        if key == "Red":
-            key = self.properties.rmq_red_routing_key
-        elif key == "Green":
-            key = self.properties.rmq_green_routing_key
-        elif key == "Blue":
-            key = self.properties.rmq_blue_routing_key
-
-        for one in objects:
-            self.__publish(self.properties.rmq_exchange_name, key, str(one))
-        pass
-
+        if self.conn.isconnected is True:
+            if key == "Red":
+                key = self.properties.rmq_red_routing_key
+            elif key == "Green":
+                key = self.properties.rmq_green_routing_key
+            elif key == "Blue":
+                key = self.properties.rmq_blue_routing_key
+            for one in objects:
+                self.__publish(self.properties.rmq_exchange_name, key, str(one))
 
     def __open_connection(self, user=pika.connection.Parameters.DEFAULT_USERNAME,
                     password=pika.connection.Parameters.DEFAULT_PASSWORD,

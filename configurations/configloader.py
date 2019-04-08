@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import sys
 from services.file.jsonfileservice import *
 

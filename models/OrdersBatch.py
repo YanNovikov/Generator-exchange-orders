@@ -1,5 +1,6 @@
-from OrdersObject import *
-from OrdersInsert import *
+from __future__ import unicode_literals
+from models.OrdersObject import *
+from models.OrdersInfo import *
 
 class OrdersBatch:
     def __init__(self, size, index, zone):
@@ -7,6 +8,7 @@ class OrdersBatch:
         self.zone = zone
         self.objects = self.getObjects(size)
         self.inserts = self.getInserts()
+        self.csvrows = self.getCsvRows()
 
     def getObjects(self, size):
         objects = []
@@ -14,9 +16,16 @@ class OrdersBatch:
             objects.append(OrdersObject(i, self.zone))
         return objects
 
+    def getCsvRows(self):
+        csvrows = []
+        for obj in self.objects:
+            for csvrow in OrdersInfo(obj).csvrows:
+                csvrows.append(csvrow)
+        return csvrows
+
     def getInserts(self):
         inserts = []
         for obj in self.objects:
-            for insert in OrdersInsert(obj).inserts:
+            for insert in OrdersInfo(obj).inserts:
                 inserts.append(insert)
         return inserts

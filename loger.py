@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import datetime
 from utils.singleton import singleton
 
@@ -28,12 +29,12 @@ class Loger:
             self.writeMessage("WARNING", msg)
 
     def writeMessage(self, tag, msg):
-        print "[{}]: {}".format(tag, msg)
+        print ("[{}]: {}".format(tag, msg))
         try:
             with open(self.filename, "a+") as file:
                 file.write("[{}]: {}\n".format(tag, msg))
         except IOError as err:
-            print "[ERROR]: Can not write to logfile. {}".format(str(err))
+            print ("[ERROR]: Can not write to logfile. {}".format(str(err)))
             
     def setLogermode(self, mode):
         self.mode = mode

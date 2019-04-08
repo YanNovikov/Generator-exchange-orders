@@ -1,9 +1,10 @@
+from __future__ import unicode_literals
 from abc import abstractmethod
 
 
 class DbConnection:
     def __init__(self, host, user, password, dbname):
-        self.__conn = None
+        self.conn = None
         self.host = host
         self.user = user
         self.password = password

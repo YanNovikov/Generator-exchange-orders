@@ -1,6 +1,6 @@
-from configuration import *
+from __future__ import unicode_literals
 from utils.singleton import singleton
-
+from configurations.configuration import *
 
 @singleton
 class MessageConfigs:
