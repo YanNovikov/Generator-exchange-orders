@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from services.file.txtfileservice import *
 from services.rabbitmq.service import *
+import services.proto.orderinfo_pb2 as OrderInfo
 from models.OrdersBatch import *
 from utils.timeit import *
 
@@ -10,6 +11,7 @@ class Generator:
         self.properties = GeneratorConfigs()
         self.fileworker = TxtFileService(self.properties.datafilename, "a+")
         self.rmqpublisher = RMQService()
+        self.rmqconsumer = RMQService()
         self.index = 1
 
     @timeit
@@ -23,6 +25,7 @@ class Generator:
         self.fileworker.open()
         self.rmqpublisher.startSending()
 
+
         for index in range(0, self.properties.batchcount):
             log.DEBUG("Batch {}.".format(index))
             self.__getEveryBatch()
@@ -31,6 +34,8 @@ class Generator:
 
         self.fileworker.close()
         self.rmqpublisher.stopSending()
+        self.rmqconsumer.startConsuming()
+        # self.rmqconsumer.stopConsuming()
 
         log.INFO("Orders created: {}.".format(self.index - 1))
         log.INFO("All rows successfully added to file {}.".format(self.properties.datafilename))
@@ -41,17 +46,17 @@ class Generator:
         self.fileworker.writeline("--Red zone")
         orders = self.__getRedZone(self.properties.redbatch)
         self.__writeCSV(orders)
-        self.rmqpublisher.sendObjects(orders.objects, "Red")
+        self.rmqpublisher.sendObjects(orders.protos, "Red")
 
         self.fileworker.writeline("--Green zone")
         orders = self.__getGreenZone(self.properties.greenbatch)
         self.__writeCSV(orders)
-        self.rmqpublisher.sendObjects(orders.objects, "Green")
+        self.rmqpublisher.sendObjects(orders.protos, "Green")
 
         self.fileworker.writeline("--Blue zone")
         orders = self.__getBlueZone(self.properties.bluebatch)
         self.__writeCSV(orders)
-        self.rmqpublisher.sendObjects(orders.objects, "Blue")
+        self.rmqpublisher.sendObjects(orders.protos, "Blue")
 
         log.DEBUG("Batch created {} rows.".format(self.properties.redgreenblue))
 
@@ -99,3 +104,4 @@ class Generator:
     @timeit
     def __writeInserts(self, orders):
         self.fileworker.writelines(orders.inserts)
+

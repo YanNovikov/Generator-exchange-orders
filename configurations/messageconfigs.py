@@ -24,5 +24,5 @@ class MessageConfigs:
             self.rmq_blue_routing_key = configs["rmq_blue_routing_key"]
             log.INFO("Configurations for messaging loaded.")
         except KeyError as err:
-            log.ERROR("Configuration does not fits arguments. {}".format(err))
+            log.ERROR("Configuration does not fits arguments. {}".format(str(err)))
             sys.exit(1)

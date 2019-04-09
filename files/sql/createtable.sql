@@ -1,5 +1,5 @@
 CREATE TABLE orders(
-  primaryid integer,
+  primaryid integer primary key,
   ID VARCHAR(32),
   CurrencyPair VARCHAR(16),
   Direction VARCHAR(16),

@@ -9,6 +9,7 @@ class OrdersBatch:
         self.objects = self.getObjects(size)
         self.inserts = self.getInserts()
         self.csvrows = self.getCsvRows()
+        self.protos = self.getProtoc()
 
     def getObjects(self, size):
         objects = []
@@ -29,3 +30,10 @@ class OrdersBatch:
             for insert in OrdersInfo(obj).inserts:
                 inserts.append(insert)
         return inserts
+
+    def getProtoc(self):
+        protoc = []
+        for obj in self.objects:
+            for proto in OrdersInfo(obj).protos:
+                protoc.append(proto)
+        return protoc

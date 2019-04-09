@@ -43,7 +43,7 @@ class GeneratorConfigs:
             self.lastbatch = self.getLastBatch(self.orderscount, self.redgreenblue * self.batchcount)
             log.INFO("Configurations for generating loaded.")
         except KeyError as err:
-            log.ERROR("Configuration does not fits arguments. {}".format(err))
+            log.ERROR("Configuration does not fits arguments. {}".format(str(err)))
             sys.exit(1)
 
     def getCorrectBatch(self, ocount, bcount):

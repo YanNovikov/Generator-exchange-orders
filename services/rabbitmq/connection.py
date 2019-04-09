@@ -113,3 +113,21 @@ class RMQConnection:
             return self.channel.queue_purge(queue_name)
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not purge queue. {}".format(str(err)))
+
+    def consume(self, queue_name, on_consume_callback):
+        try:
+            self.channel.basic_consume(queue=queue_name, on_message_callback=on_consume_callback)
+        except pika.exceptions.AMQPError as err:
+            log.ERROR("Can not consume.".format(str(err)))
+
+    def start_consuming(self):
+        try:
+            self.channel.start_consuming()
+        except pika.exceptions.AMQPError as err:
+            log.ERROR("Can not start consuming.".format(str(err)))
+
+    def stop_consuming(self):
+        try:
+            self.channel.stop_consuming()
+        except pika.exceptions.AMQPError as err:
+            log.ERROR("Can not stop consuming.".format(str(err)))

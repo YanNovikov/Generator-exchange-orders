@@ -18,6 +18,11 @@ def initialize(args):
     MessageConfigs().initializeconfigs()
 
 def execute():
+    database = MySqlService(nowopen=True)
+    createTable(database, database.conn.dbname, DbConfigs().createtablefile, DbConfigs().tablename)
+    database.cleanTable()
+    database.commit()
+    database.selectValues()
     executor = Generator()
     executor.generate()
 
@@ -27,10 +32,9 @@ def execute():
     database = MySqlService(nowopen=True)  # opens connection right here
     # dropTable(database, DbConfigs().tablename)
     # createTable(database, database.conn.dbname, DbConfigs().createtablefile, DbConfigs().tablename)
-    # database.cleanTable()
     # database.insertFromFile(GeneratorConfigs().datafilename, commiteverytime=False)  # if True commits after every insert
     # database.commit()
-    # database.selectValues()
+
 
 
 def finalize():

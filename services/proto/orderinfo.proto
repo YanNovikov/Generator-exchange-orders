@@ -1,3 +1,5 @@
+///Users/yankizlevich/Downloads/protoc-3/bin/protoc --python_out=services/proto/ services/proto/orderinfo.proto
+
 syntax = "proto3";
 
 message OrderInfo {
@@ -5,9 +7,12 @@ message OrderInfo {
     uint64 id = 2;
     string direction = 3;
     string currencypair = 4;
-    float price = 5;
-    int32 volume = 6;
-    string orderdate = 7;
-    string status = 8;
-    string tag = 9;
+    float initprice = 5;
+    float initvolume = 6;
+    float fillprice = 7;
+    float fillvolume = 8;
+    string orderdate = 9;
+    string status = 10;
+    string tag = 11;
+    string description = 12;
 }

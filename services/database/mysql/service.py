@@ -3,6 +3,7 @@ from services.database.mysql.connection import *
 from mysql.connector import errorcode
 from configurations.dbconfigs import *
 from utils.timeit import *
+from utils.InsertHeaderMaker import *
 
 class MySqlService:
     def __init__(self, nowopen=False):
@@ -38,6 +39,27 @@ class MySqlService:
                 except IOError as err:
                     log.ERROR(str(err))
                     log.ERROR("Order is not added to Table.\n")
+
+    @timeit
+    def insertConsumedObjects(self, objects, commitnow=True):
+        if self.conn.isconnected:
+            try:
+                for order in objects:
+                    hat = InsertHeaderMaker(self.__prop.tablename, order)
+                    values = " ("
+                    for item in order.__dict__.items():
+                        if item[0] == "primaryid" or item[0] == "initprice" or item[0] == "fillprice" or item[0] == "initvolume" or item[0] == "fillvolume":
+                            values += "{},".format(item[1])
+                        else:
+                            values += "'{}',".format(item[1])
+                    values = values[:-1]
+                    self.ExecuteStatement("{}{})".format(hat.getHat(), values))
+                if commitnow:
+                    self.commit()
+                log.DEBUG("Messages have bean inserted into a table - Success.")
+            except IOError as err:
+                log.ERROR(str(err))
+                log.ERROR("Order is not added to Table.\n")
 
     def ExecuteStatement(self, statement, values=None):
         if self.conn.isconnected:

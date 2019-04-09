@@ -1,19 +1,22 @@
 from __future__ import unicode_literals
 from services.rabbitmq.connection import *
 from configurations.messageconfigs import *
+from models.OrdersObject import *
 from utils.timeit import *
+from services.proto.orderinfo_pb2 import OrderInfo
+from services.database.mysql.service import *
 
 
 class RMQService:
     def __init__(self):
         self.conn = RMQConnection()
         self.properties = MessageConfigs()
+        self.consumeddata = []
+        self.consumedmessages = 0
+        self.consumedbatch = 0
 
     def startSending(self):
         log.INFO("Start sending records to RabbitMQ.")
-
-
-
         try:
             if self.__open_connection(host=self.properties.rmq_host, port=self.properties.rmq_port,
                                  virtual_host=self.properties.rmq_vhost, user=self.properties.rmq_user,
@@ -46,6 +49,9 @@ class RMQService:
 
     def stopSending(self):
         log.INFO("Sending records to RabbitMQ stopped.")
+        self.__publish(self.properties.rmq_exchange_name, self.properties.rmq_blue_routing_key, "endofhistory")
+        self.__publish(self.properties.rmq_exchange_name, self.properties.rmq_red_routing_key, "endofhistory")
+        self.__publish(self.properties.rmq_exchange_name, self.properties.rmq_green_routing_key, "endofhistory")
         self.__close_connnection()
 
     @timeit
@@ -58,7 +64,56 @@ class RMQService:
             elif key == "Blue":
                 key = self.properties.rmq_blue_routing_key
             for one in objects:
-                self.__publish(self.properties.rmq_exchange_name, key, str(one))
+                self.__publish(self.properties.rmq_exchange_name, key, one)
+            self.__publish(self.properties.rmq_exchange_name, key, "endofbatch")
+
+    def startConsuming(self):
+        try:
+            self.__open_connection(host=self.properties.rmq_host, port=self.properties.rmq_port,
+                                 virtual_host=self.properties.rmq_vhost, user=self.properties.rmq_user,
+                                 password=self.properties.rmq_password)
+        except ValueError as err:
+            log.ERROR("Occured while preparing connection for consuming messages to Rmq. {}".format(str(err)))
+            return False
+
+        log.INFO("Start getting records from RabbitMQ.")
+
+        self.__consume(queue_name="Red", on_consume_callback=self.__consumed_message)
+        self.__consume(queue_name="Blue", on_consume_callback=self.__consumed_message)
+        self.__consume(queue_name="Green", on_consume_callback=self.__consumed_message)
+
+        self.mysql = MySqlService(nowopen=True)
+        self.mysql.cleanTable()
+
+        log.INFO("Start consuming from RabbitMQ.")
+        self.__start_consuming()
+
+    def __consumed_message(self, channel, method, header, body):
+        self.consumedmessages += 1
+        if body == b'endofbatch':
+            log.DEBUG("Consumed batch №{}.".format(self.consumedbatch))
+            self.consumedbatch += 1
+            log.DEBUG("Inserting data into table '{}'".format(DbConfigs().tablename))
+            self.mysql.insertConsumedObjects(self.consumeddata, True)
+            self.consumeddata.clear()
+            return
+        elif body == b'endofhistory':
+            self.__stop_consuming()
+            return
+
+        log.INFO(body)
+        order_record = OrderInfo()
+        order_record.ParseFromString(body)
+
+        data = OrdersObject(createnow=False)
+        data.setFromObject(order_record)
+        self.consumeddata.append(data)
+
+        channel.basic_ack(delivery_tag=method.delivery_tag)
+
+    def stopConsuming(self):
+        log.INFO("Consuming is finished. Messages count = {}".format(self.consumedmessages))
+        self.__stop_consuming()
 
     def __open_connection(self, user=pika.connection.Parameters.DEFAULT_USERNAME,
                     password=pika.connection.Parameters.DEFAULT_PASSWORD,
@@ -120,3 +175,12 @@ class RMQService:
     def __exchange_unbind(self, destination, source, routing_key=''):
         log.DEBUG("Unbinding exchange: destination '{}', source '{}', routing_key '{}'".format(destination, source, routing_key))
         return self.conn.unbind_exchange(destination=destination, source=source, routing_key=routing_key)
+
+    def __consume(self, queue_name, on_consume_callback):
+        self.conn.consume(queue_name=queue_name, on_consume_callback=on_consume_callback)
+
+    def __start_consuming(self):
+        return self.conn.start_consuming()
+
+    def __stop_consuming(self):
+        return self.conn.stop_consuming()

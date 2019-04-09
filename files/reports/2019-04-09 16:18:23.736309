@@ -1,0 +1,46 @@
+Orders to be generated: 2000
+Red part: 15%
+Green part: 60%
+Blue part: 25%
+Started at 09.04.2019 13:18:23.736
+Finished at 09.04.2019 13:18:30.278
+Total time is 542.444 ms
+
+.:Method:.  =>  .:Time:.
+
+'__writeCSV' => 
+	Max: 0.643 ms
+	Average: 0.13845000000000002 ms
+	Min: 0.026 ms
+	Summary: 8.307 ms
+'__getRedZone' => 
+	Max: 7.647 ms
+	Average: 4.0092 ms
+	Min: 2.928 ms
+	Summary: 80.184 ms
+'__getBlueZone' => 
+	Max: 10.058 ms
+	Average: 6.0707 ms
+	Min: 4.636 ms
+	Summary: 121.414 ms
+'sendObjects' => 
+	Max: 112.968 ms
+	Average: 37.77693333333333 ms
+	Min: 7.442 ms
+	Summary: 2266.616 ms
+'insertConsumedObjects' => 
+	Max: 20.821 ms
+	Average: 13.80855 ms
+	Min: 10.436 ms
+	Summary: 276.171 ms
+'__getGreenZone' => 
+	Max: 26.918 ms
+	Average: 24.2398 ms
+	Min: 21.941 ms
+	Summary: 484.796 ms
+'__getEveryBatch' => 
+	Max: 184.41 ms
+	Average: 150.4195 ms
+	Min: 136.181 ms
+	Summary: 3008.39 ms
+'generate' => [6521.12] ms
