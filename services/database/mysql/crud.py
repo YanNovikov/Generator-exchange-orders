@@ -13,9 +13,12 @@ def createTable(conn, dbname, createtablefile, tablename):
                     cmd = file.read()
                     conn.ExecuteStatement("USE {}".format(dbname))
                     conn.ExecuteStatement(cmd)
+                    conn.commit()
                     log.INFO("Table has been created.")
             except mysql.connector.Error as err:
                 log.ERROR("Occured while creating table. {}".format(str(err)))
+        else:
+            log.INFO("Table is already exists.")
 
 def dropTable(conn, tablename):
     if showTable(conn, tablename):

@@ -109,6 +109,9 @@ class MySqlService:
         except Exception as err:
             log.ERROR(err)
 
+    def disconnect(self):
+        self.conn.disconnect()
+
     def commit(self):
         try:
             if self.conn.commit() is not False:

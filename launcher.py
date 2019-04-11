@@ -17,10 +17,9 @@ def initialize(args):
     MessageConfigs().initializeconfigs()
 
 def execute():
-
-    # createTable(database, database.conn.dbname, DbConfigs().createtablefile, DbConfigs().tablename)
-    # database.cleanTable()
-    # database.commit()
+    database = MySqlService(True)
+    createTable(database, database.conn.dbname, DbConfigs().createtablefile, DbConfigs().tablename)
+    database.disconnect()
 
     executor = Generator()
     executor.generate()
