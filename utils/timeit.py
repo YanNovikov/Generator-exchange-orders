@@ -5,14 +5,14 @@ from reporter import *
 
 def timeit(method):
     def timed(*args, **kw):
-        ts = time.time()
+        ts = datetime.utcnow()
         result = method(*args, **kw)
-        te = time.time()
+        te = datetime.utcnow()
         if 'log_time' in kw:
             name = kw.get('log_name', method.__name__.upper())
-            kw['log_time'][name] = int((te - ts) * 1000)
+            kw['log_time'][name] = (te - ts) * 1000
         else:
-            Reporter().addReport(method.__name__, (te - ts) * 1000)
+            Reporter().addReport(method.__name__, (te - ts).microseconds / 100)
             # print '%r  %2.2f ms' % \
             #       (method.__name__, (te - ts) * 1000)
         return result

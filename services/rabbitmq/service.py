@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from services.rabbitmq.connection import *
 from configurations.messageconfigs import *
+from reporter import *
 from models.OrdersObject import *
 from utils.timeit import *
 from services.proto.orderinfo_pb2 import OrderInfo
@@ -11,9 +12,10 @@ class RMQService:
     def __init__(self):
         self.conn = RMQConnection()
         self.properties = MessageConfigs()
+        self.stopmsgcount = 0
         self.consumeddata = []
         self.consumedmessages = 0
-        self.consumedbatch = 0
+        self.consumedbatch = 1
 
     def startSending(self):
         log.INFO("Start sending records to RabbitMQ.")
@@ -48,10 +50,11 @@ class RMQService:
         return True
 
     def stopSending(self):
-        log.INFO("Sending records to RabbitMQ stopped.")
         self.__publish(self.properties.rmq_exchange_name, self.properties.rmq_blue_routing_key, "endofhistory")
         self.__publish(self.properties.rmq_exchange_name, self.properties.rmq_red_routing_key, "endofhistory")
         self.__publish(self.properties.rmq_exchange_name, self.properties.rmq_green_routing_key, "endofhistory")
+        Reporter().sendmsgcount += 3
+        log.INFO("Sending records to RabbitMQ stopped.")
         self.__close_connnection()
 
     @timeit
@@ -63,9 +66,12 @@ class RMQService:
                 key = self.properties.rmq_green_routing_key
             elif key == "Blue":
                 key = self.properties.rmq_blue_routing_key
+
             for one in objects:
                 self.__publish(self.properties.rmq_exchange_name, key, one)
+                Reporter().sendmsgcount += 1
             self.__publish(self.properties.rmq_exchange_name, key, "endofbatch")
+            Reporter().sendmsgcount += 1
 
     def startConsuming(self):
         try:
@@ -85,35 +91,38 @@ class RMQService:
         self.mysql = MySqlService(nowopen=True)
         self.mysql.cleanTable()
 
-        log.INFO("Start consuming from RabbitMQ.")
         self.__start_consuming()
+
+    def allowDb(self):
+        self.mysql.falsealarm = False
+
+    def stopConsuming(self):
+        log.INFO("Consuming is finished. Messages count = {}".format(self.consumedmessages))
+        self.__stop_consuming()
 
     def __consumed_message(self, channel, method, header, body):
         self.consumedmessages += 1
+        Reporter().consumedmsgcount += 1
         if body == b'endofbatch':
             log.DEBUG("Consumed batch №{}.".format(self.consumedbatch))
             self.consumedbatch += 1
             log.DEBUG("Inserting data into table '{}'".format(DbConfigs().tablename))
             self.mysql.insertConsumedObjects(self.consumeddata, True)
             self.consumeddata.clear()
-            return
         elif body == b'endofhistory':
-            self.__stop_consuming()
-            return
+            self.stopmsgcount += 1
+            if self.stopmsgcount == 3:
+                self.__stop_consuming()
+        else:
+            order_record = OrderInfo()
+            order_record.ParseFromString(body)
 
-        log.INFO(body)
-        order_record = OrderInfo()
-        order_record.ParseFromString(body)
+            data = OrdersObject(createnow=False)
+            data.setFromObject(order_record)
 
-        data = OrdersObject(createnow=False)
-        data.setFromObject(order_record)
-        self.consumeddata.append(data)
+            self.consumeddata.append(data)
 
-        channel.basic_ack(delivery_tag=method.delivery_tag)
-
-    def stopConsuming(self):
-        log.INFO("Consuming is finished. Messages count = {}".format(self.consumedmessages))
-        self.__stop_consuming()
+            channel.basic_ack(delivery_tag=method.delivery_tag)
 
     def __open_connection(self, user=pika.connection.Parameters.DEFAULT_USERNAME,
                     password=pika.connection.Parameters.DEFAULT_PASSWORD,

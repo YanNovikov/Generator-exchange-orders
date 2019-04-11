@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from models.OrdersObject import *
 from models.OrdersInfo import *
+from reporter import *
 
 class OrdersBatch:
     def __init__(self, size, index, zone):
@@ -15,6 +16,7 @@ class OrdersBatch:
         objects = []
         for i in range(self.index, self.index+size):
             objects.append(OrdersObject(i, self.zone))
+        Reporter().generatedorderscount += len(objects)
         return objects
 
     def getCsvRows(self):

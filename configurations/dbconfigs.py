@@ -19,6 +19,7 @@ class DbConfigs:
             self.host = configs["host"]
             self.createtablefile = configs["createtablefile"]
             self.testselect = configs["testselect"]
+            self.selectresultfile = configs["selectresultfile"]
             self.uniqueid = 0
             log.INFO("Configurations for database usage loaded.")
         except KeyError as err:

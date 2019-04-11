@@ -48,7 +48,7 @@ class RMQConnection:
             self.channel.basic_publish(exchange=exchange_name, routing_key=routing_key,
                                        body=body, properties=properties,
                                        mandatory=mandatory)
-            log.DEBUG("Published to {}:{} message = {}".format(exchange_name, routing_key, body))
+            log.DEBUG("Published to {}.{} message = {}".format(exchange_name, routing_key, body))
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not publish to Rmq server. {}".format(str(err)))
 

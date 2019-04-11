@@ -12,6 +12,7 @@ class Generator:
         self.fileworker = TxtFileService(self.properties.datafilename, "a+")
         self.rmqpublisher = RMQService()
         self.rmqconsumer = RMQService()
+        self.dbselector = MySqlService(True)
         self.index = 1
 
     @timeit
@@ -25,20 +26,20 @@ class Generator:
         self.fileworker.open()
         self.rmqpublisher.startSending()
 
-
         for index in range(0, self.properties.batchcount):
             log.DEBUG("Batch {}.".format(index))
             self.__getEveryBatch()
         if self.properties.lastbatch > 0:
             self.__getFinalBatch()
 
+        log.INFO("Orders created: {}.".format(self.index - 1))
+        log.INFO("All rows successfully added to file {}.".format(self.properties.datafilename))
+
         self.fileworker.close()
         self.rmqpublisher.stopSending()
         self.rmqconsumer.startConsuming()
-        # self.rmqconsumer.stopConsuming()
 
-        log.INFO("Orders created: {}.".format(self.index - 1))
-        log.INFO("All rows successfully added to file {}.".format(self.properties.datafilename))
+        self.dbselector.selectValues()
 
     @timeit
     def __getEveryBatch(self):
@@ -58,7 +59,7 @@ class Generator:
         self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Blue")
 
-        log.DEBUG("Batch created {} rows.".format(self.properties.redgreenblue))
+        log.DEBUG("Batch created {} objects.".format(self.properties.redgreenblue))
 
     @timeit
     def __getFinalBatch(self):
@@ -76,24 +77,31 @@ class Generator:
                     zone = "Blue"
                     flag = 0
                 order = OrdersObject(self.index, zone)
-                self.fileworker.writelines(OrdersInfo(order).inserts)
+                self.fileworker.writelines(OrdersInfo(order).csvrows)
+                self.rmqpublisher.sendObjects(OrdersInfo(order).protos, zone)
                 self.index += 1
 
     @timeit
     def __getRedZone(self, batch):
         orders = OrdersBatch(batch, self.index, "Red")
+        Reporter().redzonecount += len(orders.objects)
+        Reporter().redzoneinserts += len(orders.inserts)
         self.index += batch
         return orders
 
     @timeit
     def __getGreenZone(self, batch):
         orders = OrdersBatch(batch, self.index, "Green")
+        Reporter().greenzonecount += len(orders.objects)
+        Reporter().greenzoneinserts += len(orders.inserts)
         self.index += batch
         return orders
 
     @timeit
     def __getBlueZone(self, batch):
         orders = OrdersBatch(batch, self.index, "Blue")
+        Reporter().bluezonecount += len(orders.objects)
+        Reporter().bluezoneinserts += len(orders.inserts)
         self.index += batch
         return orders
 
