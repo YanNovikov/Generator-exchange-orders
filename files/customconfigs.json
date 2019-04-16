@@ -33,7 +33,7 @@
   "password": "root",
   "host": "localhost",
   "createtablefile": "files/sql/createtable.sql",
-  "testselect": "SELECT * FROM Orders",
+  "testselect": "SELECT * FROM orders",
   "selectresultfile": "files/selectresult",
 
   "rmq_queue_original": "orders_values",

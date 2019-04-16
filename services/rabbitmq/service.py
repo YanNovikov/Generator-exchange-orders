@@ -18,7 +18,7 @@ class RMQService:
         self.consumedbatch = 1
 
     def startSending(self):
-        log.INFO("Start sending records to RabbitMQ.")
+        log.INFO("Sending records to RabbitMQ started.")
         try:
             if self.__open_connection(host=self.properties.rmq_host, port=self.properties.rmq_port,
                                  virtual_host=self.properties.rmq_vhost, user=self.properties.rmq_user,
@@ -82,14 +82,13 @@ class RMQService:
             log.ERROR("Occured while preparing connection for consuming messages to Rmq. {}".format(str(err)))
             return False
 
-        log.INFO("Start getting records from RabbitMQ.")
+        log.INFO("Start consuming records from RabbitMQ.")
 
         self.__consume(queue_name="Red", on_consume_callback=self.__consumed_message)
         self.__consume(queue_name="Blue", on_consume_callback=self.__consumed_message)
         self.__consume(queue_name="Green", on_consume_callback=self.__consumed_message)
 
         self.mysql = MySqlService(nowopen=True)
-        self.mysql.cleanTable()
 
         self.__start_consuming()
 
@@ -98,21 +97,23 @@ class RMQService:
 
     def stopConsuming(self):
         log.INFO("Consuming is finished. Messages count = {}".format(self.consumedmessages))
+        log.INFO("Rows are inserted into table. There are {} records".format(Reporter().insertrowscount))
         self.__stop_consuming()
 
     def __consumed_message(self, channel, method, header, body):
         self.consumedmessages += 1
         Reporter().consumedmsgcount += 1
         if body == b'endofbatch':
-            log.DEBUG("Consumed batch №{}.".format(self.consumedbatch))
+            log.DEBUG("Consumed {} messages.".format(len(self.consumeddata)))
             self.consumedbatch += 1
-            log.DEBUG("Inserting data into table '{}'".format(DbConfigs().tablename))
             self.mysql.insertConsumedObjects(self.consumeddata, True)
             self.consumeddata.clear()
+            channel.basic_ack(delivery_tag=method.delivery_tag)
         elif body == b'endofhistory':
             self.stopmsgcount += 1
             if self.stopmsgcount == 3:
-                self.__stop_consuming()
+                self.stopConsuming()
+            channel.basic_ack(delivery_tag=method.delivery_tag)
         else:
             order_record = OrderInfo()
             order_record.ParseFromString(body)
@@ -133,63 +134,66 @@ class RMQService:
         else:
             vhost = pika.connection.Parameters.DEFAULT_VIRTUAL_HOST
 
-        log.DEBUG("Trying to connect to Rmq")
+        log.TRACE("Connecting to Rmq")
         self.conn.open(host=host, port=port, user=user, password=password, virtual_host=vhost)
 
         return self.conn.isconnected
 
     def __close_connnection(self):
-        log.DEBUG("Closing RMQ connection")
+        log.TRACE("Closing RMQ connection")
         self.conn.close()
 
     def __publish(self, exchange_name, routing_key, body, properties=None, mandatory=False):
         self.conn.publish(exchange_name, routing_key, body, properties=properties, mandatory=mandatory)
 
     def __declare_exchange(self, exchange_name, exchange_type, passive=False, durable=True, auto_delete=False):
-        log.DEBUG("Trying to create exchange '{}' type '{}'".format(exchange_name, exchange_type))
+        log.TRACE("Trying to create exchange '{}' type '{}'".format(exchange_name, exchange_type))
         return self.conn.declare_exchange(exchange_name, exchange_type, passive=passive, durable=durable, auto_delete=auto_delete)
 
     def __declare_queue(self, queue_name):
-        log.DEBUG("Trying to declare queue '{}'".format(queue_name))
+        log.TRACE("Trying to declare queue '{}'".format(queue_name))
         return self.conn.declare_queue(queue_name=queue_name)
 
     def __delete_queue(self, queue_name, if_unused=False, if_empty=False):
-        log.DEBUG("Deleting queue '{}'".format(queue_name))
+        log.TRACE("Deleting queue '{}'".format(queue_name))
         return self.conn.delete_queue(queue_name, if_unused=if_unused, if_empty=if_empty)
 
     def __delete_exchange(self, exchange_name=None, if_unused=False):
 
-        log.DEBUG("Deleting exchange '{}'".format(exchange_name))
+        log.TRACE("Deleting exchange '{}'".format(exchange_name))
         return self.conn.delete_exchange(exchange_name=exchange_name, if_unused=if_unused)
 
     def __queue_bind(self, queue_name, exchange_name, routing_key=None):
 
-        log.DEBUG("Binding queue '{}' to exchange '{}' with routing key  '{}'".format(queue_name, exchange_name,
+        log.TRACE("Binding queue '{}' to exchange '{}' with routing key  '{}'".format(queue_name, exchange_name,
                                                                                              routing_key))
         return self.conn.bind_queue(queue_name=queue_name, exchange_name=exchange_name, routing_key=routing_key)
 
     def __queue_unbind(self, queue_name, exchange_name, routing_key=None):
-        log.DEBUG("Unbinding queue '{}' from exchange '{}' with routing key  '{}'".format(queue_name, exchange_name,
+        log.TRACE("Unbinding queue '{}' from exchange '{}' with routing key  '{}'".format(queue_name, exchange_name,
                                                                                        routing_key))
         return self.conn.unbind_queue(queue_name=queue_name, exchange_name=exchange_name, routing_key=routing_key)
 
     def __queue_purge(self, queue_name):
-        log.DEBUG('Purging queue {}'.format(queue_name))
+        log.TRACE('Purging queue {}'.format(queue_name))
         return self.conn.purge_queue(queue_name)
 
     def __exchange_bind(self, destination, source, routing_key=''):
-        log.DEBUG("Binding exchange: destination '{}', source '{}', routing_key '{}'".format(destination, source, routing_key))
+        log.TRACE("Binding exchange: destination '{}', source '{}', routing_key '{}'".format(destination, source, routing_key))
         return self.conn.bind_exchange(destination=destination, source=source, routing_key=routing_key)
 
     def __exchange_unbind(self, destination, source, routing_key=''):
-        log.DEBUG("Unbinding exchange: destination '{}', source '{}', routing_key '{}'".format(destination, source, routing_key))
+        log.TRACE("Unbinding exchange: destination '{}', source '{}', routing_key '{}'".format(destination, source, routing_key))
         return self.conn.unbind_exchange(destination=destination, source=source, routing_key=routing_key)
 
     def __consume(self, queue_name, on_consume_callback):
+        log.TRACE("Consuming: queue_name '{}', on_consume_callback '{}'".format(queue_name, on_consume_callback))
         self.conn.consume(queue_name=queue_name, on_consume_callback=on_consume_callback)
 
     def __start_consuming(self):
+        log.TRACE("Start consuming.")
         return self.conn.start_consuming()
 
     def __stop_consuming(self):
+        log.TRACE("Stop consuming.")
         return self.conn.stop_consuming()

@@ -9,6 +9,9 @@ def getSinExp(value):
 def getCosExp(value):
     return math.exp(math.cos(value))
 
+def getTanExp(value):
+    return math.exp(math.tan(value))
+
 def getToProviderStatus(id):
     if math.fmod(id, 2) == 0:
         return g.status[1]

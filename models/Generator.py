@@ -12,37 +12,34 @@ class Generator:
         self.fileworker = TxtFileService(self.properties.datafilename, "a+")
         self.rmqpublisher = RMQService()
         self.rmqconsumer = RMQService()
-        self.dbselector = MySqlService(True)
         self.index = 1
 
     @timeit
     def generate(self):
+        log.INFO("Generation started...")
         cleanFile(self.properties.datafilename)
 
-        log.DEBUG("Red zone ==== {}".format(self.properties.redbatch))
-        log.DEBUG("Green zone ==== {}".format(self.properties.greenbatch))
-        log.DEBUG("Blue zone ==== {}".format(self.properties.bluebatch))
-
+        log.DEBUG("Every batch takes: {} red, {}, green, {} blue.".format(self.properties.redbatch,
+                                                                          self.properties.greenbatch,
+                                                                          self.properties.bluebatch))
         self.fileworker.open()
         self.rmqpublisher.startSending()
 
         for index in range(0, self.properties.batchcount):
-            log.DEBUG("Batch {}.".format(index))
-            self.__getEveryBatch()
+            self.__getEveryBatch(index)
         if self.properties.lastbatch > 0:
             self.__getFinalBatch()
 
+        log.INFO("Generation finished.")
         log.INFO("Orders created: {}.".format(self.index - 1))
-        log.INFO("All rows successfully added to file {}.".format(self.properties.datafilename))
 
         self.fileworker.close()
         self.rmqpublisher.stopSending()
         self.rmqconsumer.startConsuming()
 
-        self.dbselector.selectValues()
-
     @timeit
-    def __getEveryBatch(self):
+    def __getEveryBatch(self, index):
+        log.DEBUG("Batch {}.".format(index))
 
         self.fileworker.writeline("--Red zone")
         orders = self.__getRedZone(self.properties.redbatch)
@@ -63,23 +60,22 @@ class Generator:
 
     @timeit
     def __getFinalBatch(self):
-        log.DEBUG("Additional zone ==== {}".format(self.properties.lastbatch))
-        self.fileworker.writeline("--Additional zone")
         flag = 0
         while self.index <= self.properties.orderscount:
-                if flag == 0:
-                    zone = "Green"
-                    flag += 1
-                elif flag == 1:
-                    zone = "Red"
-                    flag += 1
-                elif flag == 2:
-                    zone = "Blue"
-                    flag = 0
-                order = OrdersObject(self.index, zone)
-                self.fileworker.writelines(OrdersInfo(order).csvrows)
-                self.rmqpublisher.sendObjects(OrdersInfo(order).protos, zone)
-                self.index += 1
+            if flag == 0:
+                zone = "Green"
+                flag += 1
+            elif flag == 1:
+                zone = "Red"
+                flag += 1
+            elif flag == 2:
+                zone = "Blue"
+                flag = 0
+            order = OrdersObject(self.index, zone)
+            self.__writeCSV(OrdersInfo(order))
+            self.rmqpublisher.sendObjects(OrdersInfo(order).protos, zone)
+            Reporter().generatedorderscount += 1
+            self.index += 1
 
     @timeit
     def __getRedZone(self, batch):
@@ -107,7 +103,8 @@ class Generator:
 
     @timeit
     def __writeCSV(self, orders):
-        self.fileworker.writelines(orders.csvrows)
+        if self.fileworker.writelines(orders.csvrows) is True:
+            Reporter().writentofilerowscount += len(orders.csvrows)
 
     @timeit
     def __writeInserts(self, orders):

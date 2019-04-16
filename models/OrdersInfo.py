@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from configurations.dbconfigs import *
-from utils.InsertHeaderMaker import *
+from utils.insertheadermaker import *
 from utils.randfunctions import *
 import services.proto.orderinfo_pb2 as OrderInformation
 
@@ -67,6 +67,7 @@ class OrdersInfo:
             self.order.fillprice = 0
             self.order.fillvolume = 0
         self.order.primaryid = DbConfigs().getUniqueId()
+
         for item in self.order.__dict__.items():
             if item[0] == "status" or item[0] == "orderdate":
                 row += "{},".format(item[1][index])
@@ -81,13 +82,25 @@ class OrdersInfo:
         result.id = self.order.id
         result.direction = self.order.direction
         result.currencypair = self.order.currencypair
+
+        result.status = self.order.status[index]
+        result.orderdate = self.order.orderdate[index]
+
+        if index == 2:
+            if self.order.status[index] == "Filled":
+                self.order.fillprice = self.order.initprice
+                self.order.fillvolume = self.order.initvolume
+            elif self.order.status[index] == "Partial-filled":
+                self.order.fillprice = round(getChangedValue(self.order.initprice, self.order.id), 5)
+                self.order.fillvolume = round(getChangedValue(self.order.initvolume, self.order.id), 2)
+        else:
+            self.order.fillprice = 0
+            self.order.fillvolume = 0
+
         result.initprice = float(self.order.initprice)
         result.initvolume = float(self.order.initvolume)
         result.fillprice = float(self.order.fillprice)
         result.fillvolume = float(self.order.fillvolume)
-        result.status = self.order.status[index]
-
-        result.orderdate = self.order.orderdate[index]
 
         result.tag = self.order.tag
         result.description = self.order.description

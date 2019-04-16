@@ -2,10 +2,9 @@ from __future__ import unicode_literals
 import mysql.connector
 from services.database.dbconnection import *
 from loger import *
-log = Loger()
+log = Logger()
 
 # Please catch Exceptions and Errors outside
-
 
 class MySqlConnection(DbConnection):
     def __init__(self, host, user, password, dbname):
@@ -15,32 +14,29 @@ class MySqlConnection(DbConnection):
     def cursor(self, buffered=None, raw=None, prepared=None, cursor_class=None, dictionary=None, named_tuple=None):
         if self.isconnected:
             if self.__curs is None:
-                log.DEBUG("Setting cursor for '{}'.".format(self.dbname))
+                log.TRACE("Setting cursor for '{}'.".format(self.dbname))
                 self.__curs = self.conn.cursor(buffered, raw, prepared, cursor_class, dictionary, named_tuple)
-                log.DEBUG("Successfully set.")
+                log.TRACE("Successfully set.")
                 return self.__curs
             else:
                 return self.__curs
         else:
-            try:
-                self.connect()
-            except mysql.connector.Error as err:
-                log.ERROR("Can not get cursor because connection is unset.")
-                raise err
-            self.cursor(buffered, raw, prepared, cursor_class, dictionary, named_tuple)
+            log.ERROR("Can not get cursor because connection is unset.")
 
     def connect(self):
         if self.isconnected is True:
-            log.INFO("Connection to database '{}' is Success.".format(self.dbname))
+            log.DEBUG("Connection to database '{}' is Success.".format(self.dbname))
         else:
-            log.DEBUG("Trying to open new connection.")
+            log.TRACE("Trying to open new connection.")
             try:
+                self.__curs = None
                 self.conn = self.__createConnection()
+                self.isconnected = True
+                self.connect()
             except mysql.connector.Error as err:
                 log.ERROR("Unable to connect to {}".format(self.getConnectionString(dbconnect=True)))
+                self.isconnected = False
                 raise err
-            self.isconnected = True
-            self.connect()
 
     def commit(self):
         if self.isconnected:
@@ -57,9 +53,9 @@ class MySqlConnection(DbConnection):
         if self.isconnected is True:
             self.conn.close()
             self.isconnected = False
-            log.INFO("Disconnected - Success.")
+            log.TRACE("Disconnected from mysql - Success.")
             return True
-        log.INFO("Already disconnected.")
+        log.TRACE("It is already disconnected.")
 
     def __openConnection(self):
         return mysql.connector.connect(host=self.host, user=self.user, password=self.password, database=self.dbname,

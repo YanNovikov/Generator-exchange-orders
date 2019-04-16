@@ -78,8 +78,20 @@ Then write all fields of configurations according to defaults.json
 ## Start app
 
 ```
-$ python launcher.py customconfigs.json INFO
+$ python launcher.py -c --loggermode=info --configs customconfigs.json
 ```
+
+--loggermode it is a level of output logs. Can be: trace, debug, info, warning, error, critical, fatal.
+
+-f file writing logs.
+
+-c console writing logs.
+
+--configs is a path to your config file.
+
+All options are not required.
+By default is info level, console and file writing, defaults.json
+
 
 ---
 ## See result

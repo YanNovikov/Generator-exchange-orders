@@ -1,12 +1,17 @@
 from __future__ import unicode_literals
+
+import sys
+
 from loger import *
 import threading
 import mysql.connector
-log = Loger()
+from services.file.txtfileservice import *
+log = Logger()
 
 
 def createTable(conn, dbname, createtablefile, tablename):
     if conn.conn.isconnected:
+        log.TRACE("Trying to create table '{}'.".format(tablename))
         if not showTable(conn, tablename):
             try:
                 with open(createtablefile, "r") as file:
@@ -14,11 +19,14 @@ def createTable(conn, dbname, createtablefile, tablename):
                     conn.ExecuteStatement("USE {}".format(dbname))
                     conn.ExecuteStatement(cmd)
                     conn.commit()
-                    log.INFO("Table has been created.")
+                    log.INFO("Table '{}' has been created.".format(tablename))
             except mysql.connector.Error as err:
                 log.ERROR("Occured while creating table. {}".format(str(err)))
         else:
-            log.INFO("Table is already exists.")
+            log.INFO("Table '{}' exists.".format(tablename))
+    else:
+        log.FATAL("Initializing database is not passed...")
+        sys.exit(0)
 
 def dropTable(conn, tablename):
     if showTable(conn, tablename):
@@ -42,21 +50,17 @@ def showTable(conn, tablename):
         conn.ExecuteStatement("SHOW TABLES")
         for x in conn.cursor:
             if str(x).__contains__(tablename):
-                log.DEBUG("Table '{}' is found.".format(tablename))
                 return True
     else:
         return False
 
-def selectValues(self):
-    cursor = self.conn.cursor()
-    cursor.execute(self.prop.testselect)
-    result = cursor.fetchall()
-    if result:
-        log.INFO("Select results are: ")
-        for x in result:
-            log.INFO(str(x))
-    else:
-        log.INFO("No rows found.")
+def selectValues(conn, query):
+    if conn.ExecuteStatement(query) is not False:
+        result = conn.cursor.fetchall()
+        if result:
+            return result
+        else:
+            log.DEBUG("No rows found.")
 
 def createDatabase(dbname, params):
     conn = mysql.connector.connect(host=params.host, user=params.user, password=params.password)
@@ -96,4 +100,5 @@ def removeRecords(conn, tablename):
         log.INFO("All records have been deleted.")
     except Exception as err:
         log.ERROR(err)
+
 

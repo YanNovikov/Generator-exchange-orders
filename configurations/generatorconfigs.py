@@ -4,7 +4,6 @@ from utils.singleton import singleton
 import time
 import math
 from datetime import datetime
-log = Loger()
 
 
 @singleton

@@ -14,7 +14,7 @@ class OrderID(ObjectProperty):
     def createvalue(self, num):
         part1 = getSinExp(num)
         part2 = getCosExp(num + 1)
-        return int(("{}{}".format(math.trunc(part1 * 100000000), math.trunc(part2 * 10000000)))[:15])
+        return int(("{}{}".format(math.trunc(part1 * 10000000), math.trunc(part2 * 10000000)))[:15])
 
 
 class CurrencyPair(ObjectProperty):

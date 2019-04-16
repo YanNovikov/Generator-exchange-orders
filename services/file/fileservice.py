@@ -6,7 +6,7 @@ from loger import *
 
 class FileService:
     def __init__(self, filename, mode):
-        self.log = Loger()
+        self.log = Logger()
         self.file = None
         self.filename = filename
         self.openmode = mode
@@ -15,11 +15,11 @@ class FileService:
     def open(self):
         try:
             if self.isopened:
-                self.log.DEBUG("{} already opened in mode {}.".format(self.filename, self.openmode))
+                self.log.TRACE("{} already opened in mode {}.".format(self.filename, self.openmode))
                 return True
             else:
                 self.file = open(self.filename, self.openmode)
-                self.log.DEBUG("{} opened in mode {} - Success.".format(self.filename, self.openmode))
+                self.log.TRACE("{} opened in mode {} - Success.".format(self.filename, self.openmode))
                 self.isopened = True
                 return True
         except IOError as err:
@@ -30,9 +30,9 @@ class FileService:
         if self.isopened:
             self.file.close()
             self.isopened = False
-            self.log.DEBUG("File {} is closed - Success.".format(self.filename))
+            self.log.TRACE("File {} is closed - Success.".format(self.filename))
         else:
-            self.log.DEBUG("File {} is not opened.".format(self.filename))
+            self.log.TRACE("File {} is not opened.".format(self.filename))
 
     @abstractmethod
     def writeline(self, message):
@@ -54,7 +54,7 @@ def cleanFile(filename):
     try:
         with open(filename, "r+") as file:
             file.truncate()
-            Loger().DEBUG("File '{}' has been just cleaned.".format(file.name))
+            Logger().TRACE("File '{}' has been just cleaned.".format(file.name))
     except IOError as err:
         print (str(err))
 

@@ -22,7 +22,8 @@ class TxtFileService(FileService):
             if self.writeline(msg):
                 pass
             else:
-                return
+                return False
+        return True
 
     def read(self):
         try:

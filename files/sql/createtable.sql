@@ -1,14 +1,14 @@
 CREATE TABLE orders(
-  primaryid integer primary key,
-  ID VARCHAR(32),
+  PrimaryId integer primary key,
+  Id VARCHAR(32),
   CurrencyPair VARCHAR(16),
   Direction VARCHAR(16),
   Status VARCHAR(16),
   OrderDate DATETIME,
-  initVolume FLOAT,
-  initPrice FLOAT,
-  fillVolume FLOAT,
-  fillPrice FLOAT,
+  InitVolume FLOAT,
+  InitPrice FLOAT,
+  FillVolume FLOAT,
+  FillPrice FLOAT,
   Tag VARCHAR(16),
   Description VARCHAR(255)
 )

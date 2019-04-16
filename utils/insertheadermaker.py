@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
-from loger import Loger
-log = Loger()
+from loger import *
+log = Logger()
 
 
 class InsertHeaderMaker:

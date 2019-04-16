@@ -5,11 +5,12 @@ from datetime import datetime
 import math
 import threading
 
+
 @singleton
 class Reporter:
     def __init__(self):
-        self.log = Loger()
-        self.fileworker = TxtFileService("files/reports/{}".format(datetime.now()), "a+")
+        self.log = Logger()
+        self.fileworker = TxtFileService("files/reports/{}".format(datetime.now().ctime()), "a+")
         self.checkpointno = 1
         self.insertrowscount = 0
         self.consumedmsgcount = 0
@@ -22,6 +23,7 @@ class Reporter:
         self.greenzoneinserts = 0
         self.bluezonecount = 0
         self.bluezoneinserts = 0
+        self.selectresult = []
         self.final = False
 
     def initialize(self):
@@ -37,14 +39,14 @@ class Reporter:
             else:
                 self.__reports[methodname] = []
                 self.__reports[methodname].append(round(tc, 3))
-            self.log.DEBUG("[Reporter]: method='{}' {}".format(methodname, round(tc, 3)))
+            self.log.TRACE("[Reporter]: method='{}' {}".format(methodname, round(tc, 3)))
 
         except KeyError as err:
             self.log.ERROR("Wrong method name is used. {}".format(str(err)))
 
         except AttributeError as err:
             self.initialize()
-            self.log.WARNING("Maybe you forgot to start reporter. it is on now. {}".format(str(err)))
+            self.log.WARNING("Maybe you forgot to start reporter. It is turned on now. {}".format(str(err)))
             self.addReport(methodname, tc)
 
     def finalize(self, prop):
@@ -84,10 +86,23 @@ class Reporter:
 
         self.fileworker.writelines(parameters)
 
+        if self.selectresult is not None and len(self.selectresult) is 3:
+            total = self.selectresult[0][0]
+            green = self.selectresult[1][0]
+            red = self.selectresult[2][0] - self.selectresult[1][0]
+            blue = self.selectresult[0][0] - self.selectresult[2][0]
+            parameters = ["\nResults of select query\n",
+                          "Total count: {}  100%".format(total),
+                          "Green zone count: {}  {}%".format(green, round((green / total) * 100, 2)),
+                          "Red zone count: {}  {}%".format(red, round((red / total) * 100, 2)),
+                          "Blue zone count: {}  {}%".format(blue, round((blue / total) * 100, 2))]
+
+            self.fileworker.writelines(parameters)
+
         self.log.INFO("Report is made in file {}.".format(self.fileworker.filename))
 
     def checkpoint(self):
-        if self.checkpointno < 5 and self.final is False:
+        if self.checkpointno < 6 and self.final is False:
             stopedat = datetime.utcnow()
             total = stopedat - self.startedat
 
@@ -105,4 +120,4 @@ class Reporter:
             self.fileworker.writelines(parameters)
             self.checkpointno += 1
 
-            threading.Timer(2, self.checkpoint).start()
+            threading.Timer(1, self.checkpoint).start()

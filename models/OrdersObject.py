@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
 from models.OrdersProperties import *
-from utils.randfunctions import *
 from models.OrdersInfo import *
-log = Loger()
+log = Logger()
 
 
 class OrdersObject:
