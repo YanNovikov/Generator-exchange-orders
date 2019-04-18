@@ -1,6 +1,6 @@
 {
   "datafilename": "files/ordersincsv",
-  "orderscount": 2000,
+  "orderscount": 9000,
   "batchcount": 100,
   "redpart": 0.15,
   "greenpart": 0.60,

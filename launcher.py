@@ -13,9 +13,7 @@ def initialize(args):
         args.remove(args[0])
         optlist, args = getopt.getopt(args, 'fc', ['loggermode=', 'configs='])
         for opt, val in optlist:
-            if opt == "-c":
-                Logger().setLoggeroutput(opt)
-            elif opt == "-f":
+            if opt == "-c" or opt == "-f":
                 Logger().setLoggeroutput(opt)
             elif opt == "--loggermode":
                 Logger().setLoggermode(val)
@@ -23,7 +21,6 @@ def initialize(args):
                 Configuration().__init__(val)
     except getopt.GetoptError as err:
         print(str(err))
-
 
     log.INFO("Initializing application...")
 
@@ -55,8 +52,6 @@ def finalize():
 
     database = MySqlService(True)
     database.insertFromFile("files/buffer.txt")
-    database.commit()
-    cleanFile("files/buffer.txt")
 
     Reporter().selectresult = (selectValues(database, " ".join(fs.read())))
     database.disconnect()

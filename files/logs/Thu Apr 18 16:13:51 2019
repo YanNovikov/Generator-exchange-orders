@@ -1,0 +1,1417 @@
+[LOGGER]: Started with default settings.
+[LOGGER]: Logger mode is now set to debug.
+[INFO]: Initializing application...
+[INFO]: Loading configs from files/defaults.json.
+[DEBUG]: Read from files/defaults.json - Success
+[INFO]: Configurations for generating loaded.
+[INFO]: Configurations for database usage loaded.
+[INFO]: Configurations for messaging loaded.
+[DEBUG]: Connection to host:localhost, user='root', dbname='generator' is Success.
+[DEBUG]: Connection to database 'generator' is Success.
+[INFO]: Table 'orders' exists.
+[INFO]: All records from table 'orders' have been deleted.
+[DEBUG]: Changes are successfully commited.
+[INFO]: Initializing completed.
+[INFO]: Generation started...
+[DEBUG]: Every batch takes: 13 red, 54, green, 22 blue.
+[INFO]: Sending records to RabbitMQ started.
+[DEBUG]: Successfully connected to RabbitMQ server.
+[DEBUG]: Exchange 'orders' is created - Success.
+[DEBUG]: Queue 'Red' is declared - Success.
+[DEBUG]: Queue 'Green' is declared - Success.
+[DEBUG]: Queue 'Blue' is declared - Success.
+[DEBUG]: Batch 0.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 1.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 2.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 3.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 4.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 5.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 6.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 7.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 8.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 9.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 10.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 11.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 12.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 13.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 14.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 15.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 16.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 17.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 18.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 19.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 20.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 21.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 22.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 23.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 24.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 25.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 26.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 27.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 28.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 29.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 30.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 31.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 32.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 33.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 34.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 35.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 36.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 37.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 38.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 39.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 40.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 41.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 42.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 43.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 44.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 45.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 46.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 47.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 48.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 49.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 50.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 51.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 52.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 53.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 54.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 55.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 56.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 57.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 58.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 59.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 60.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 61.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 62.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 63.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 64.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 65.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 66.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 67.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 68.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 69.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 70.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 71.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 72.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 73.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 74.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 75.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 76.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 77.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 78.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 79.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 80.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 81.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 82.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 83.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 84.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 85.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 86.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 87.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 88.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 89.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 90.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 91.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 92.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 93.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 94.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 95.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 96.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 97.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 98.
+[DEBUG]: Batch created 89 objects.
+[DEBUG]: Batch 99.
+[DEBUG]: Batch created 89 objects.
+[INFO]: Generation finished.
+[INFO]: Orders created: 9000.
+[INFO]: Sending records to RabbitMQ stopped.
+[DEBUG]: Connection to Rmq server closed successfully
+[DEBUG]: Successfully connected to RabbitMQ server.
+[INFO]: Start consuming records from RabbitMQ.
+[DEBUG]: Connection to host:localhost, user='root', dbname='generator' is Success.
+[DEBUG]: Connection to database 'generator' is Success.
+[INFO]: Consuming started.
+[DEBUG]: Consumed 72 messages.
+[DEBUG]: Inserted 72 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 31 messages.
+[DEBUG]: Inserted 31 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 27 messages.
+[DEBUG]: Inserted 27 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 70 messages.
+[DEBUG]: Inserted 70 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 39 messages.
+[DEBUG]: Inserted 39 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 22 messages.
+[DEBUG]: Inserted 22 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 59 messages.
+[DEBUG]: Inserted 59 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 18 messages.
+[DEBUG]: Inserted 18 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 43 messages.
+[DEBUG]: Inserted 43 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 15 messages.
+[DEBUG]: Inserted 15 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 6 messages.
+[DEBUG]: Inserted 6 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 71 messages.
+[DEBUG]: Inserted 71 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 25 messages.
+[DEBUG]: Inserted 25 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 58 messages.
+[DEBUG]: Inserted 58 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 11 messages.
+[DEBUG]: Inserted 11 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 27 messages.
+[DEBUG]: Inserted 27 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 40 messages.
+[DEBUG]: Inserted 40 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 56 messages.
+[DEBUG]: Inserted 56 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 27 messages.
+[DEBUG]: Inserted 27 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 30 messages.
+[DEBUG]: Inserted 30 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 22 messages.
+[DEBUG]: Inserted 22 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 9 messages.
+[DEBUG]: Inserted 9 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 50 messages.
+[DEBUG]: Inserted 50 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 51 messages.
+[DEBUG]: Inserted 51 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 16 messages.
+[DEBUG]: Inserted 16 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 62 messages.
+[DEBUG]: Inserted 62 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 58 messages.
+[DEBUG]: Inserted 58 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 1 messages.
+[DEBUG]: Consumed 71 messages.
+[DEBUG]: Inserted 71 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 22 messages.
+[DEBUG]: Inserted 22 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 36 messages.
+[DEBUG]: Inserted 36 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 58 messages.
+[DEBUG]: Inserted 58 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 56 messages.
+[DEBUG]: Inserted 56 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 32 messages.
+[DEBUG]: Inserted 32 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 46 messages.
+[DEBUG]: Inserted 46 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 30 messages.
+[DEBUG]: Inserted 30 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 27 messages.
+[DEBUG]: Inserted 27 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 36 messages.
+[DEBUG]: Inserted 36 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 7 messages.
+[DEBUG]: Inserted 7 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 31 messages.
+[DEBUG]: Inserted 31 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 30 messages.
+[DEBUG]: Inserted 30 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 60 messages.
+[DEBUG]: Inserted 60 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 6 messages.
+[DEBUG]: Inserted 6 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 43 messages.
+[DEBUG]: Inserted 43 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 56 messages.
+[DEBUG]: Inserted 56 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 6 messages.
+[DEBUG]: Inserted 6 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 49 messages.
+[DEBUG]: Inserted 49 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 54 messages.
+[DEBUG]: Inserted 54 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 53 messages.
+[DEBUG]: Inserted 53 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 31 messages.
+[DEBUG]: Inserted 31 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 13 messages.
+[DEBUG]: Inserted 13 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 13 messages.
+[DEBUG]: Inserted 13 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 59 messages.
+[DEBUG]: Inserted 59 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 7 messages.
+[DEBUG]: Inserted 7 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 54 messages.
+[DEBUG]: Inserted 54 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 33 messages.
+[DEBUG]: Inserted 33 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 62 messages.
+[DEBUG]: Inserted 62 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 1 messages.
+[DEBUG]: Consumed 62 messages.
+[DEBUG]: Inserted 62 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 39 messages.
+[DEBUG]: Inserted 39 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 59 messages.
+[DEBUG]: Inserted 59 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 36 messages.
+[DEBUG]: Inserted 36 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 6 messages.
+[DEBUG]: Inserted 6 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 56 messages.
+[DEBUG]: Inserted 56 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 15 messages.
+[DEBUG]: Inserted 15 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 49 messages.
+[DEBUG]: Inserted 49 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 56 messages.
+[DEBUG]: Inserted 56 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 0 messages.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 37 messages.
+[DEBUG]: Inserted 37 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 18 messages.
+[DEBUG]: Inserted 18 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 62 messages.
+[DEBUG]: Inserted 62 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 11 messages.
+[DEBUG]: Inserted 11 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 51 messages.
+[DEBUG]: Inserted 51 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 18 messages.
+[DEBUG]: Inserted 18 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 70 messages.
+[DEBUG]: Inserted 70 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 7 messages.
+[DEBUG]: Inserted 7 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 51 messages.
+[DEBUG]: Inserted 51 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 46 messages.
+[DEBUG]: Inserted 46 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 9 messages.
+[DEBUG]: Inserted 9 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 16 messages.
+[DEBUG]: Inserted 16 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 26 messages.
+[DEBUG]: Inserted 26 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 49 messages.
+[DEBUG]: Inserted 49 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 0 messages.
+[DEBUG]: Consumed 63 messages.
+[DEBUG]: Inserted 63 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 63 messages.
+[DEBUG]: Inserted 63 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 1 messages.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 21 messages.
+[DEBUG]: Inserted 21 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 57 messages.
+[DEBUG]: Inserted 57 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 30 messages.
+[DEBUG]: Inserted 30 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 25 messages.
+[DEBUG]: Inserted 25 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 62 messages.
+[DEBUG]: Inserted 62 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 9 messages.
+[DEBUG]: Inserted 9 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 54 messages.
+[DEBUG]: Inserted 54 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 51 messages.
+[DEBUG]: Inserted 51 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 58 messages.
+[DEBUG]: Inserted 58 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 16 messages.
+[DEBUG]: Inserted 16 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 16 messages.
+[DEBUG]: Inserted 16 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 59 messages.
+[DEBUG]: Inserted 59 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 9 messages.
+[DEBUG]: Inserted 9 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 43 messages.
+[DEBUG]: Inserted 43 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 46 messages.
+[DEBUG]: Inserted 46 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 18 messages.
+[DEBUG]: Inserted 18 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 59 messages.
+[DEBUG]: Inserted 59 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 12 messages.
+[DEBUG]: Inserted 12 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 58 messages.
+[DEBUG]: Inserted 58 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 57 messages.
+[DEBUG]: Inserted 57 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 1 messages.
+[DEBUG]: Consumed 62 messages.
+[DEBUG]: Inserted 62 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 22 messages.
+[DEBUG]: Inserted 22 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 36 messages.
+[DEBUG]: Inserted 36 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 64 messages.
+[DEBUG]: Inserted 64 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 1 messages.
+[DEBUG]: Consumed 59 messages.
+[DEBUG]: Inserted 59 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 54 messages.
+[DEBUG]: Inserted 54 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 13 messages.
+[DEBUG]: Inserted 13 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 68 messages.
+[DEBUG]: Inserted 68 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 29 messages.
+[DEBUG]: Inserted 29 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 28 messages.
+[DEBUG]: Inserted 28 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 27 messages.
+[DEBUG]: Inserted 27 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 31 messages.
+[DEBUG]: Inserted 31 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 7 messages.
+[DEBUG]: Inserted 7 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 55 messages.
+[DEBUG]: Inserted 55 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 34 messages.
+[DEBUG]: Inserted 34 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 33 messages.
+[DEBUG]: Inserted 33 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 61 messages.
+[DEBUG]: Inserted 61 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 10 messages.
+[DEBUG]: Inserted 10 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 41 messages.
+[DEBUG]: Inserted 41 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 53 messages.
+[DEBUG]: Inserted 53 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 10 messages.
+[DEBUG]: Inserted 10 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 61 messages.
+[DEBUG]: Inserted 61 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 32 messages.
+[DEBUG]: Inserted 32 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 46 messages.
+[DEBUG]: Inserted 46 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 10 messages.
+[DEBUG]: Inserted 10 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 13 messages.
+[DEBUG]: Inserted 13 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 40 messages.
+[DEBUG]: Inserted 40 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 0 messages.
+[DEBUG]: Consumed 55 messages.
+[DEBUG]: Inserted 55 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 52 messages.
+[DEBUG]: Inserted 52 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 12 messages.
+[DEBUG]: Inserted 12 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 10 messages.
+[DEBUG]: Inserted 10 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 0 messages.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 0 messages.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 6 messages.
+[DEBUG]: Inserted 6 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 12 messages.
+[DEBUG]: Inserted 12 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 8 messages.
+[DEBUG]: Inserted 8 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 54 messages.
+[DEBUG]: Inserted 54 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 78 messages.
+[DEBUG]: Inserted 78 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 69 messages.
+[DEBUG]: Inserted 69 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 48 messages.
+[DEBUG]: Inserted 48 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 19 messages.
+[DEBUG]: Inserted 19 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 71 messages.
+[DEBUG]: Inserted 71 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 61 messages.
+[DEBUG]: Inserted 61 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 55 messages.
+[DEBUG]: Inserted 55 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 26 messages.
+[DEBUG]: Inserted 26 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 68 messages.
+[DEBUG]: Inserted 68 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 57 messages.
+[DEBUG]: Inserted 57 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 64 messages.
+[DEBUG]: Inserted 64 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 52 messages.
+[DEBUG]: Inserted 52 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 10 messages.
+[DEBUG]: Inserted 10 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 74 messages.
+[DEBUG]: Inserted 74 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 70 messages.
+[DEBUG]: Inserted 70 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 71 messages.
+[DEBUG]: Inserted 71 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 24 messages.
+[DEBUG]: Inserted 24 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 35 messages.
+[DEBUG]: Inserted 35 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 66 messages.
+[DEBUG]: Inserted 66 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 72 messages.
+[DEBUG]: Inserted 72 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 18 messages.
+[DEBUG]: Inserted 18 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 56 messages.
+[DEBUG]: Inserted 56 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 61 messages.
+[DEBUG]: Inserted 61 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 67 messages.
+[DEBUG]: Inserted 67 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 68 messages.
+[DEBUG]: Inserted 68 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 66 messages.
+[DEBUG]: Inserted 66 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 69 messages.
+[DEBUG]: Inserted 69 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 47 messages.
+[DEBUG]: Inserted 47 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 10 messages.
+[DEBUG]: Inserted 10 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 51 messages.
+[DEBUG]: Inserted 51 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 63 messages.
+[DEBUG]: Inserted 63 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 5 messages.
+[DEBUG]: Inserted 5 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 20 messages.
+[DEBUG]: Inserted 20 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 162 messages.
+[DEBUG]: Inserted 162 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[INFO]: Consuming is finished. Messages count = 22050
+[INFO]: Rows are inserted into table. There are 21642 records
+[DEBUG]: Connection to host:localhost, user='root', dbname='generator' is Success.
+[DEBUG]: Connection to database 'generator' is Success.
+[DEBUG]: Read from files/sql/reportselect.sql - Success
+[INFO]: Report is made in file files/reports/Thu Apr 18 16:13:51 2019.

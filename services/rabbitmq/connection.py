@@ -1,4 +1,7 @@
 from __future__ import unicode_literals
+
+import time
+
 from configurations.messageconfigs import *
 from loger import *
 import pika
@@ -8,7 +11,6 @@ log = Logger()
 
 class RMQConnection:
     def __init__(self):
-        self.params = pika.connection.Parameters
         self.connection = None
         self.channel = None
         self.isconnected = False
@@ -22,13 +24,14 @@ class RMQConnection:
             try:
                 credentials = pika.PlainCredentials(username=user, password=password)
                 params = pika.ConnectionParameters(host=host, port=port, virtual_host=virtual_host, credentials=credentials)
-
+                log.TRACE("{} {}".format(params, credentials))
                 self.connection = pika.BlockingConnection(params)
                 self.channel = self.connection.channel()
                 log.DEBUG("Successfully connected to RabbitMQ server.")
                 self.isconnected = True
             except pika.exceptions.AMQPConnectionError as err:
-                log.ERROR("Occured while connection to RMQ. {}".format(str(err)))
+                log.ERROR("Connection to RMQ failed. {}".format(str(err)))
+                self.isconnected = False
                 return False
         else:
             log.DEBUG("Already connected to Rmq.")
@@ -49,8 +52,11 @@ class RMQConnection:
                                        body=body, properties=properties,
                                        mandatory=mandatory)
             log.TRACE("Published to {}.{} message = {}".format(exchange_name, routing_key, body))
+            return True
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not publish to Rmq server. {}".format(str(err)))
+            self.isconnected = False
+            return False
 
     def declare_exchange(self, exchange_name, exchange_type, passive=False, durable=True, auto_delete=False):
         try:
@@ -63,9 +69,9 @@ class RMQConnection:
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not create exchange '{}'. {}".format(exchange_name, str(err)))
 
-    def declare_queue(self, queue_name):
+    def declare_queue(self, queue_name, durable):
         try:
-            self.channel.queue_declare(queue=queue_name)
+            self.channel.queue_declare(queue=queue_name, durable=durable)
             log.DEBUG("Queue '{}' is declared - Success.".format(queue_name))
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not create queue '{}'. {}".format(queue_name, str(err)))
@@ -123,11 +129,23 @@ class RMQConnection:
     def start_consuming(self):
         try:
             self.channel.start_consuming()
+            return True
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not start consuming.".format(str(err)))
+            self.isconnected=False
+            return False
 
     def stop_consuming(self):
         try:
             self.channel.stop_consuming()
+            return True
         except pika.exceptions.AMQPError as err:
             log.ERROR("Can not stop consuming.".format(str(err)))
+            return False
+
+    def basic_qos(self, prefetch_count):
+        try:
+            self.channel.basic_qos(prefetch_count=prefetch_count)
+        except pika.exceptions.AMQPError as err:
+            log.ERROR("Can not stop consuming.".format(str(err)))
+        pass

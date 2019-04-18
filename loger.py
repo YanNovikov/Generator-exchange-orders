@@ -22,6 +22,7 @@ class Logger:
         self.mode = 3
         self.output = "-cf"
         self.filename = "files/logs/{}".format(datetime.datetime.now().ctime())
+        self.__LOGGER("Started with default settings.")
 
     def TRACE(self, msg):
         if self.mode < 2:
@@ -64,16 +65,16 @@ class Logger:
                 print("[ERROR]: Can not write to logfile. {}".format(str(err)))
 
     def setLoggeroutput(self, output):
-        self.output = output
         if output == "-c":
-            self.writeMessage("LOGGER", "Logger output goes to console.")
-            os.remove(self.filename)
+            self.writeMessage("LOGGER", "Logger output goes to console now.")
+            if os.path.exists(self.filename):
+                os.remove(self.filename)
         elif output == "-f":
-            self.writeMessage("LOGGER", "Logger output goes to file.")
-        else:
-            self.writeMessage("LOGGER", "Logger output goes both to console and file.")
+            self.writeMessage("LOGGER", "Logger output goes to file {}.".format(self.filename))
+
+        self.output = output
             
-    def setLoggermode(self, mode):
+    def setLoggermode(self, mode="info"):
         modenames = {
             'trace': 1,
             'debug': 2,

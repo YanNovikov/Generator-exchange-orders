@@ -43,17 +43,17 @@ class Generator:
 
         self.fileworker.writeline("--Red zone")
         orders = self.__getRedZone(self.properties.redbatch)
-        self.__writeCSV(orders)
+        # self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Red")
 
         self.fileworker.writeline("--Green zone")
         orders = self.__getGreenZone(self.properties.greenbatch)
-        self.__writeCSV(orders)
+        # self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Green")
 
         self.fileworker.writeline("--Blue zone")
         orders = self.__getBlueZone(self.properties.bluebatch)
-        self.__writeCSV(orders)
+        # self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Blue")
 
         log.DEBUG("Batch created {} objects.".format(self.properties.redgreenblue))

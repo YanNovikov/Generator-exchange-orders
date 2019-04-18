@@ -1,0 +1,126 @@
+
+Checkpoint number: 1
+
+After start: 0.00314 s
+Red zone: objects = 0, inserts = 0
+Green zone: objects = 0, inserts = 0
+Blue zone: objects = 0, inserts = 0
+Generated objects count: 0
+Rows in csv written to file: 0
+Send messages count: 0
+Consumed messages count: 0
+Rows inserted: 0
+
+
+Checkpoint number: 2
+
+After start: 0.01393 s
+Red zone: objects = 169, inserts = 274
+Green zone: objects = 702, inserts = 2106
+Blue zone: objects = 264, inserts = 404
+Generated objects count: 1135
+Rows in csv written to file: 0
+Send messages count: 2692
+Consumed messages count: 0
+Rows inserted: 0
+
+
+Checkpoint number: 3
+
+After start: 0.0261 s
+Red zone: objects = 377, inserts = 594
+Green zone: objects = 1512, inserts = 4536
+Blue zone: objects = 616, inserts = 918
+Generated objects count: 2505
+Rows in csv written to file: 0
+Send messages count: 6110
+Consumed messages count: 0
+Rows inserted: 0
+
+
+Checkpoint number: 4
+
+After start: 0.03208 s
+Red zone: objects = 585, inserts = 899
+Green zone: objects = 2430, inserts = 7290
+Blue zone: objects = 968, inserts = 1457
+Generated objects count: 3983
+Rows in csv written to file: 0
+Send messages count: 9728
+Consumed messages count: 0
+Rows inserted: 0
+
+
+Checkpoint number: 5
+
+After start: 0.11763 s
+Red zone: objects = 806, inserts = 1235
+Green zone: objects = 3294, inserts = 9882
+Blue zone: objects = 1342, inserts = 2008
+Generated objects count: 5496
+Rows in csv written to file: 0
+Send messages count: 13309
+Consumed messages count: 0
+Rows inserted: 0
+
+Orders to be generated: 9000
+Red part: 15%
+Green part: 60%
+Blue part: 25%
+Started at 18.04.2019 13:13:51.673
+Finished at 18.04.2019 13:14:11.972
+Total time is 2.98818 s
+
+.:Method:.  =>  .:Time:.
+
+'__writeCSV' => 
+	Max: 1.04 ms
+	Average: 0.132 ms
+	Min: 0.06 ms
+	Summary: 13.16 ms
+'insertFromFile' => [0.2] ms
+'__getBlueZone' => 
+	Max: 64.61 ms
+	Average: 44.201 ms
+	Min: 38.55 ms
+	Summary: 4420.06 ms
+'__getRedZone' => 
+	Max: 48.99 ms
+	Average: 29.714 ms
+	Min: 23.26 ms
+	Summary: 2971.37 ms
+'sendObjects' => 
+	Max: 326.25 ms
+	Average: 83.072 ms
+	Min: 2.77 ms
+	Summary: 33228.8 ms
+'insertConsumedObjects' => 
+	Max: 381.23 ms
+	Average: 122.546 ms
+	Min: 0.06 ms
+	Summary: 49018.24 ms
+'__getGreenZone' => 
+	Max: 247.73 ms
+	Average: 204.781 ms
+	Min: 174.94 ms
+	Summary: 20478.11 ms
+'__getEveryBatch' => 
+	Max: 812.0 ms
+	Average: 613.931 ms
+	Min: 558.55 ms
+	Summary: 61393.09 ms
+'generate' => [698.48] ms
+'__getFinalBatch' => [851.53] ms
+
+Generated objects count: 9000
+Rows in csv written to file: 197
+Send messages count: 22050
+Consumed messages count: 22050
+Rows inserted: 21642
+
+Results of select query
+
+Total count: 9000  100%
+Green zone count: 5434  60.38%
+Red zone count: 1333  14.81%
+Blue zone count: 2233  24.81%

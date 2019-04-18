@@ -28,7 +28,7 @@ class MySqlService:
             return False
 
     def reconnect(self, attempts=0):
-        if attempts < 3:
+        if attempts < 2:
             log.DEBUG("Trying reconnect in 1 s...")
             if self.connect() is False:
                 time.sleep(1)
@@ -39,14 +39,18 @@ class MySqlService:
 
     @timeit
     def insertFromFile(self, datafilename, commiteverytime=False):
-        with open(datafilename, "r+") as file:
+        if os.stat(datafilename).st_size != 0:
+            self.connect()
+            file = TxtFileService(datafilename, "r+")
             try:
-                for line in file.readlines():
+                for line in file.read():
                     if self.ExecuteStatement(line):
                         Reporter().insertrowscount += 1
                         if commiteverytime:
                             self.commit()
-                log.INFO("All rows from file have bean inserted into a table - Success.")
+                log.DEBUG("All rows from file have bean inserted into a table - Success.")
+                cleanFile(datafilename)
+                self.commit()
             except IOError as err:
                 log.ERROR(str(err))
                 log.ERROR("Order is not added to Table.\n")
@@ -70,9 +74,12 @@ class MySqlService:
                 else:
                     with open("files/buffer.txt", "a+") as file:
                         file.write(("{}{})\n".format(hat.getHat(), values)))
+
             if inserted < len(objects):
                 if not self.reconnect():
                     log.DEBUG("Reconnect failed...")
+                else:
+                    log.DEBUG("Successfully reconnected...")
             if inserted > 1:
                 if commitnow:
                     log.DEBUG("Inserted {} rows.".format(inserted))
