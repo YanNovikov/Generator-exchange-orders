@@ -1,7 +1,7 @@
 {
   "datafilename": "files/ordersincsv",
-  "orderscount": 9000,
-  "batchcount": 100,
+  "orderscount": 1000,
+  "batchcount": 10,
   "redpart": 0.15,
   "greenpart": 0.60,
   "bluepart": 0.25,
@@ -31,7 +31,7 @@
   "tablename": "orders",
   "user": "root",
   "password": "12345678",
-  "host": "localhost",
+  "host": "127.0.0.1",
   "createtablefile": "files/sql/createtable.sql",
   "testselect": "SELECT * FROM orders",
   "selectresultfile": "files/selectresult",

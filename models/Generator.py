@@ -39,19 +39,19 @@ class Generator:
 
     @timeit
     def __getEveryBatch(self, index):
-        log.DEBUG("Batch {}.".format(index))
+        log.INFO("Batch {}.".format(index))
 
-        self.fileworker.writeline("--Red zone")
+        # self.fileworker.writeline("--Red zone")
         orders = self.__getRedZone(self.properties.redbatch)
         # self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Red")
 
-        self.fileworker.writeline("--Green zone")
+        # self.fileworker.writeline("--Green zone")
         orders = self.__getGreenZone(self.properties.greenbatch)
         # self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Green")
 
-        self.fileworker.writeline("--Blue zone")
+        # self.fileworker.writeline("--Blue zone")
         orders = self.__getBlueZone(self.properties.bluebatch)
         # self.__writeCSV(orders)
         self.rmqpublisher.sendObjects(orders.protos, "Blue")
