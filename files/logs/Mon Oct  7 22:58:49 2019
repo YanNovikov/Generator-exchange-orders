@@ -1,0 +1,30 @@
+[LOGGER]: Started with default settings.
+[LOGGER]: Logger mode is now set to INFO.
+[INFO]: Initializing application...
+[INFO]: Loading configs from files/defaults.json.
+[INFO]: Configurations for generating loaded.
+[INFO]: Configurations for database usage loaded.
+[INFO]: Configurations for messaging loaded.
+[INFO]: Table 'orders' exists.
+[INFO]: All records from table 'orders' have been deleted.
+[INFO]: Initializing completed.
+[INFO]: Generation started...
+[INFO]: Sending records to RabbitMQ started.
+[INFO]: Batch 0.
+[INFO]: Batch 1.
+[INFO]: Batch 2.
+[INFO]: Batch 3.
+[INFO]: Batch 4.
+[INFO]: Batch 5.
+[INFO]: Batch 6.
+[INFO]: Batch 7.
+[INFO]: Batch 8.
+[INFO]: Batch 9.
+[INFO]: Generation finished.
+[INFO]: Orders created: 1000.
+[INFO]: Sending records to RabbitMQ stopped.
+[INFO]: Start consuming records from RabbitMQ.
+[INFO]: Consuming started.
+[INFO]: Consuming is finished. Messages count = 2465
+[INFO]: Rows are inserted into table. There are 2431 records
+[INFO]: Report is made in file files/reports/Mon Oct  7 22:58:49 2019.

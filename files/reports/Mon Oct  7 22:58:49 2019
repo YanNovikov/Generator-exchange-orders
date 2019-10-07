@@ -1,0 +1,94 @@
+
+Checkpoint number: 1
+
+After start: 0.00324 s
+Red zone: objects = 0, inserts = 0
+Green zone: objects = 0, inserts = 0
+Blue zone: objects = 0, inserts = 0
+Generated objects count: 0
+Rows in csv written to file: 0
+Send messages count: 0
+Consumed messages count: 0
+Rows inserted: 0
+
+
+Checkpoint number: 2
+
+After start: 0.04805 s
+Red zone: objects = 150, inserts = 236
+Green zone: objects = 600, inserts = 1800
+Blue zone: objects = 250, inserts = 396
+Generated objects count: 1000
+Rows in csv written to file: 0
+Send messages count: 2465
+Consumed messages count: 610
+Rows inserted: 578
+
+
+Checkpoint number: 3
+
+After start: 0.08884 s
+Red zone: objects = 150, inserts = 236
+Green zone: objects = 600, inserts = 1800
+Blue zone: objects = 250, inserts = 396
+Generated objects count: 1000
+Rows in csv written to file: 0
+Send messages count: 2465
+Consumed messages count: 2314
+Rows inserted: 2251
+
+Orders to be generated: 1000
+Red part: 15%
+Green part: 60%
+Blue part: 25%
+Started at 07.10.2019 19:58:49.803
+Finished at 07.10.2019 19:58:51.946
+Total time is 1.42401 s
+
+.:Method:.  =>  .:Time:.
+
+'insertFromFile' => [0.26] ms
+'__getRedZone' => 
+	Max: 36.93 ms
+	Average: 33.488 ms
+	Min: 29.47 ms
+	Summary: 334.88 ms
+'sendObjects' => 
+	Max: 244.32 ms
+	Average: 101.983 ms
+	Min: 25.13 ms
+	Summary: 3059.49 ms
+'__getBlueZone' => 
+	Max: 58.14 ms
+	Average: 51.878 ms
+	Min: 47.94 ms
+	Summary: 518.78 ms
+'insertConsumedObjects' => 
+	Max: 361.39 ms
+	Average: 152.761 ms
+	Min: 2.97 ms
+	Summary: 4582.84 ms
+'__getGreenZone' => 
+	Max: 267.67 ms
+	Average: 234.242 ms
+	Min: 220.16 ms
+	Summary: 2342.42 ms
+'__getEveryBatch' => 
+	Max: 675.21 ms
+	Average: 629.861 ms
+	Min: 595.57 ms
+	Summary: 6298.61 ms
+'generate' => [736.21] ms
+
+Generated objects count: 1000
+Rows in csv written to file: 0
+Send messages count: 2465
+Consumed messages count: 2465
+Rows inserted: 2431
+
+Results of select query
+
+Total count: 1000  100%
+Green zone count: 600  60.0%
+Red zone count: 150  15.0%
+Blue zone count: 250  25.0%

@@ -1,0 +1,145 @@
+[LOGGER]: Started with default settings.
+[LOGGER]: Logger mode is now set to DEBUG.
+[INFO]: Initializing application...
+[INFO]: Loading configs from files/defaults.json.
+[DEBUG]: Read from files/defaults.json - Success
+[INFO]: Configurations for generating loaded.
+[INFO]: Configurations for database usage loaded.
+[INFO]: Configurations for messaging loaded.
+[DEBUG]: Connection to host:localhost, user='root', dbname='generator' is Success.
+[DEBUG]: Connection to database 'generator' is Success.
+[INFO]: Table 'orders' exists.
+[INFO]: All records from table 'orders' have been deleted.
+[DEBUG]: Changes are successfully commited.
+[INFO]: Initializing completed.
+[INFO]: Generation started...
+[DEBUG]: Every batch takes: 15 red, 60, green, 25 blue.
+[INFO]: Sending records to RabbitMQ started.
+[DEBUG]: Successfully connected to RabbitMQ server.
+[DEBUG]: Exchange 'orders' is created - Success.
+[DEBUG]: Queue 'Red' is declared - Success.
+[DEBUG]: Queue 'Green' is declared - Success.
+[DEBUG]: Queue 'Blue' is declared - Success.
+[INFO]: Batch 0.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 1.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 2.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 3.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 4.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 5.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 6.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 7.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 8.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Batch 9.
+[DEBUG]: Batch created 100 objects.
+[INFO]: Generation finished.
+[INFO]: Orders created: 1000.
+[INFO]: Sending records to RabbitMQ stopped.
+[DEBUG]: Connection to Rmq server closed successfully
+[DEBUG]: Successfully connected to RabbitMQ server.
+[INFO]: Start consuming records from RabbitMQ.
+[DEBUG]: Connection to host:localhost, user='root', dbname='generator' is Success.
+[DEBUG]: Connection to database 'generator' is Success.
+[INFO]: Consuming started.
+[DEBUG]: Consumed 72 messages.
+[DEBUG]: Inserted 72 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 42 messages.
+[DEBUG]: Inserted 42 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 34 messages.
+[DEBUG]: Inserted 34 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 65 messages.
+[DEBUG]: Inserted 65 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 15 messages.
+[DEBUG]: Inserted 15 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 58 messages.
+[DEBUG]: Inserted 58 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 63 messages.
+[DEBUG]: Inserted 63 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 0 messages.
+[DEBUG]: Consumed 77 messages.
+[DEBUG]: Inserted 77 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 34 messages.
+[DEBUG]: Inserted 34 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 39 messages.
+[DEBUG]: Inserted 39 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 39 messages.
+[DEBUG]: Inserted 39 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 37 messages.
+[DEBUG]: Inserted 37 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 4 messages.
+[DEBUG]: Inserted 4 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 69 messages.
+[DEBUG]: Inserted 69 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 64 messages.
+[DEBUG]: Inserted 64 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 3 messages.
+[DEBUG]: Inserted 3 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 75 messages.
+[DEBUG]: Inserted 75 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 73 messages.
+[DEBUG]: Inserted 73 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 79 messages.
+[DEBUG]: Inserted 79 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 16 messages.
+[DEBUG]: Inserted 16 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 68 messages.
+[DEBUG]: Inserted 68 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 146 messages.
+[DEBUG]: Inserted 146 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[DEBUG]: Consumed 180 messages.
+[DEBUG]: Inserted 180 rows.
+[DEBUG]: Changes are successfully commited.
+[INFO]: Consuming is finished. Messages count = 2465
+[INFO]: Rows are inserted into table. There are 2432 records
+[DEBUG]: Connection to host:localhost, user='root', dbname='generator' is Success.
+[DEBUG]: Connection to database 'generator' is Success.
+[DEBUG]: Read from files/sql/reportselect.sql - Success
+[INFO]: Report is made in file files/reports/Mon Oct  7 22:58:02 2019.
