@@ -5,10 +5,7 @@ Rows are encoded to protocol buffer format first, and then send to rmq queue.
 After consuming messages data is inserted into table in database.
 Objects are generating, sending, inserting by batches, what size you set in configurations.
 Customize objects that you generate.
-For more details ask me on:
 
-Instagram: @yankizlevich
-Telegram: @YanKizlevich
 Clone url:
 
 ```bash
