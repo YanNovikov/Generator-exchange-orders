@@ -31,10 +31,6 @@ class RMQService:
             log.ERROR("Occured while preparing exchange to send messages to Rmq. {}".format(str(err)))
             return False
         try:
-        #     self.__delete_queue("Red")
-        #     self.__delete_queue("Green")
-        #     self.__delete_queue("Blue")
-
             self.__declare_queue(queue_name="Red", durable=True)
             self.__declare_queue(queue_name="Green", durable=True)
             self.__declare_queue(queue_name="Blue", durable=True)

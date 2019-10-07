@@ -28,8 +28,9 @@ def initialize(args):
     DbConfigs().initializeconfigs()
     MessageConfigs().initializeconfigs()
 
-    database = MySqlService(True)
+    # createDatabase(DbConfigs().dbname, DbConfigs())
     # dropTable(database, DbConfigs().tablename)
+    database = MySqlService(True)
     createTable(database, database.conn.dbname, DbConfigs().createtablefile, DbConfigs().tablename)
     database.cleanTable()
     database.commit()
@@ -44,7 +45,6 @@ def execute():
 
 
     # dropDatabase(DbConfigs().dbname, DbConfigs())
-    # createDatabase(DbConfigs().dbname, DbConfigs())
 
 
 def finalize():

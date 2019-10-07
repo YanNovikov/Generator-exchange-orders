@@ -31,7 +31,7 @@
   "tablename": "orders",
   "user": "root",
   "password": "12345678",
-  "host": "127.0.0.1",
+  "host": "localhost",
   "createtablefile": "files/sql/createtable.sql",
   "testselect": "SELECT * FROM orders",
   "selectresultfile": "files/selectresult",
